@@ -31,10 +31,12 @@ namespace NewMailer
         {
 
         }
-        private void GoToUpload (object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Upload), null);
-        }
 
+        private void GoToUpload(object sender, RoutedEventArgs e)
+        {
+            Upload upload = new NewMailer.Upload();
+            upload.Show();
+            this.Close();
+        }
     }
 }
