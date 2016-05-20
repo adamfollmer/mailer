@@ -74,16 +74,27 @@ namespace NewMailer
 
         private void TestCSVParse(object sender, RoutedEventArgs e)
         {
-            //var reader = File.ReadAllLines();
-            StreamReader reader = new StreamReader("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\test.csv");
-            string line = reader.ReadLine();
-            foreach (char test in reader.ReadLine())
+            StringBuilder test = new StringBuilder();
+            foreach(var line in File.ReadLines("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\test.csv"))
+            {
+                if (line.Contains("Planet Fitness"))
                 {
-                    if (line.Contains("Planet Fitness"))
-                    {
-                        txtEditor.Text = "Yes";
-                    }
+                    test.Append("yes"); 
                 }
+            }
+            txtEditor.Text = test.ToString();
+
+
+            ////var reader = File.ReadAllLines();
+            //StreamReader reader = new StreamReader("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\test.csv");
+            //string line = reader.ReadLine();
+            //foreach (char test in reader.ReadLine())
+            //    {
+            //        if (line.Contains("Planet Fitness"))
+            //        {
+            //            txtEditor.Text = "Yes";
+            //        }
+            //    }
         }
     }
 }
