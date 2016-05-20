@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -10,31 +11,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace NewMailer
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Upload.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Upload : Window
     {
-
-        public MainWindow()
+        public Upload()
         {
             InitializeComponent();
-            
         }
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if(openFileDialog.ShowDialog() == true)
+            {
+                txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
+            }
         }
-        private void GoToUpload (object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Upload), null);
-        }
-
     }
 }
