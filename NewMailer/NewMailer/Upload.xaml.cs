@@ -31,12 +31,12 @@ namespace NewMailer
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            if(openFileDialog.ShowDialog() == true)
+            if (openFileDialog.ShowDialog() == true)
             {
                 txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
             }
         }
-       
+
         private void SendEmail(object sender, RoutedEventArgs e) //eventually can pass string server, to, from, subject, body
         {
             string to = "adam_2131@hotmail.com";
@@ -69,6 +69,21 @@ namespace NewMailer
                 txtEditor.Text = ex.ToString();
                 Console.WriteLine("Exception caught in CreateTimeoutTestMessage(): {0}", ex.ToString());
             }
+        }
+
+
+        private void TestCSVParse(object sender, RoutedEventArgs e)
+        {
+            //var reader = File.ReadAllLines();
+            StreamReader reader = new StreamReader("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\test.csv");
+            string line = reader.ReadLine();
+            foreach (char test in reader.ReadLine())
+                {
+                    if (line.Contains("Planet Fitness"))
+                    {
+                        txtEditor.Text = "Yes";
+                    }
+                }
         }
     }
 }
