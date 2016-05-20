@@ -36,7 +36,6 @@ namespace NewMailer
                 txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
             }
         }
-
         private void SendEmail(object sender, RoutedEventArgs e) //eventually can pass string server, to, from, subject, body
         {
             string to = "adam_2131@hotmail.com";
@@ -72,29 +71,43 @@ namespace NewMailer
         }
 
 
-        private void TestCSVParse(object sender, RoutedEventArgs e)
+        private void CSVParse(object sender, RoutedEventArgs e)
         {
-            StringBuilder test = new StringBuilder();
-            foreach(var line in File.ReadLines("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\test.csv"))
+            CreateGymMember memberMaker = new CreateGymMember();
+            //var reader = File.ReadAllLines();
+            List<GymMember> EmailList = new List<GymMember>();
+            foreach (string line in File.ReadLines(@"C:\\Users\\Derek Scheller\\Documents\\Visual Studio 2015\\Projects\\EmailTools\\mailer\\NewMailer\\NewMailer\\test.csv"))
             {
-                if (line.Contains("Planet Fitness"))
+                if (line.Contains("@"))
                 {
-                    test.Append("yes"); 
+                    if (line.Contains("Planet Fitness"))
+                    {
+                        GymMember ValidMember = memberMaker.Create(line);
+                        EmailList.Add(ValidMember);
+                    }
                 }
             }
-            txtEditor.Text = test.ToString();
-
-
-            ////var reader = File.ReadAllLines();
-            //StreamReader reader = new StreamReader("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\test.csv");
-            //string line = reader.ReadLine();
-            //foreach (char test in reader.ReadLine())
-            //    {
-            //        if (line.Contains("Planet Fitness"))
-            //        {
-            //            txtEditor.Text = "Yes";
-            //        }
-            //    }
         }
+        public class GymMember
+            {
+                public string Name { get; set; }
+                public string Email { get; set; }
+                public string GymId { get; set; }
+            }
+        private class CreateGymMember
+        {  
+            public GymMember Create(string MemberInfo)
+            {
+                string[] colData = MemberInfo.Split(',');
+                GymMember Member = new GymMember()
+                {
+                    GymId = colData[0],
+                    Name = colData[3].Trim(new char[] { '"' }) + " " + colData[2].Trim(new char[] { '"' }),
+                    Email = colData[4]
+                };
+                return Member;
+            }
+        }
+
     }
 }
