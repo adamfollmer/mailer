@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConvertCsv.cs" />
+    <Compile Include="Render.cs" />
+    <Compile Include="StringConverter.cs" />
     <Compile Include="Upload.xaml.cs">
       <DependentUpon>Upload.xaml</DependentUpon>
     </Compile>

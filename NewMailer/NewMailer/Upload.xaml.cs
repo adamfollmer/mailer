@@ -33,6 +33,8 @@ namespace NewMailer
             {
                 txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
             }
+            var gymMembers = Render.RenderCSV(openFileDialog.FileName);
         }
+        
     }
 }

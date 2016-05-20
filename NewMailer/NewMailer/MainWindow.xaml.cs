@@ -33,7 +33,9 @@ namespace NewMailer
         }
         private void GoToUpload (object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Upload), null);
+            Upload up = new Upload();
+            up.ShowDialog();
+            Close();
         }
 
     }
