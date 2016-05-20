@@ -35,7 +35,6 @@ namespace NewMailer
             {
                 txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
             }
-            var gymMembers = Render.RenderCSV(openFileDialog.FileName);
         }
         private void SendEmail(object sender, RoutedEventArgs e) //eventually can pass string server, to, from, subject, body
         {
@@ -72,18 +71,43 @@ namespace NewMailer
         }
 
 
-        private void TestCSVParse(object sender, RoutedEventArgs e)
+        private void CSVParse(object sender, RoutedEventArgs e)
         {
+            CreateGymMember memberMaker = new CreateGymMember();
             //var reader = File.ReadAllLines();
-            StreamReader reader = new StreamReader("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\test.csv");
-            string line = reader.ReadLine();
-            foreach (char test in reader.ReadLine())
+            List<GymMember> EmailList = new List<GymMember>();
+            foreach (string line in File.ReadLines(@"C:\\Users\\Derek Scheller\\Documents\\Visual Studio 2015\\Projects\\EmailTools\\mailer\\NewMailer\\NewMailer\\test.csv"))
             {
-                if (line.Contains("Planet Fitness"))
+                if (line.Contains("@"))
                 {
-                    txtEditor.Text = "Yes";
+                    if (line.Contains("Planet Fitness"))
+                    {
+                        GymMember ValidMember = memberMaker.Create(line);
+                        EmailList.Add(ValidMember);
+                    }
                 }
             }
         }
+        public class GymMember
+            {
+                public string Name { get; set; }
+                public string Email { get; set; }
+                public string GymId { get; set; }
+            }
+        private class CreateGymMember
+        {  
+            public GymMember Create(string MemberInfo)
+            {
+                string[] colData = MemberInfo.Split(',');
+                GymMember Member = new GymMember()
+                {
+                    GymId = colData[0],
+                    Name = colData[3].Trim(new char[] { '"' }) + " " + colData[2].Trim(new char[] { '"' }),
+                    Email = colData[4]
+                };
+                return Member;
+            }
+        }
+
     }
 }
