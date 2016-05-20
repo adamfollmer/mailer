@@ -37,10 +37,6 @@ namespace NewMailer
             }
             var gymMembers = Render.RenderCSV(openFileDialog.FileName);
         }
-<<<<<<< HEAD
-        
-=======
-
         private void SendEmail(object sender, RoutedEventArgs e) //eventually can pass string server, to, from, subject, body
         {
             string to = "adam_2131@hotmail.com";
@@ -82,13 +78,12 @@ namespace NewMailer
             StreamReader reader = new StreamReader("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\test.csv");
             string line = reader.ReadLine();
             foreach (char test in reader.ReadLine())
+            {
+                if (line.Contains("Planet Fitness"))
                 {
-                    if (line.Contains("Planet Fitness"))
-                    {
-                        txtEditor.Text = "Yes";
-                    }
+                    txtEditor.Text = "Yes";
                 }
+            }
         }
->>>>>>> 62acc138e72c22d23ac205837c5bdf098672071f
     }
 }
