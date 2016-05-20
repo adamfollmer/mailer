@@ -31,12 +31,18 @@ namespace NewMailer
         {
 
         }
-        private void GoToUpload (object sender, RoutedEventArgs e)
+
+        private void GoToUpload(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             Upload up = new Upload();
             up.ShowDialog();
             Close();
+=======
+            Upload upload = new NewMailer.Upload();
+            upload.Show();
+            this.Close();
+>>>>>>> 62acc138e72c22d23ac205837c5bdf098672071f
         }
-
     }
 }
