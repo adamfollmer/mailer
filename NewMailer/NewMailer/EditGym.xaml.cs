@@ -31,7 +31,6 @@ namespace NewMailer
             ArrayList gyms = new ArrayList();
             //Code foreach based on CSV
             return gyms;
-
         }
     }
 }

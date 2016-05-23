@@ -24,7 +24,7 @@ namespace NewMailer
     /// </summary>
     public partial class Upload : Window
     {
-       EmailConstruction GymSelection = new EmailConstruction();
+        EmailConstruction GymSelection = new EmailConstruction();
 
         public Upload()
         {
@@ -46,31 +46,64 @@ namespace NewMailer
             List<GymMember> EmailList = CSVParse(CSV);
             foreach (GymMember member in EmailList)
             {
-                EmailConstruction.Gym localGym = GymSelection.SelectGym(member);
+                EmailConstruction.Gym localGym = new EmailConstruction.Gym
+                {
+                    gyms = null,
+                    Name = "Gym",
+                    Address = "123 EZ Street",
+                    CityZip = "Milwaukee, WI",
+                    Phone = "123-555-5555",
+                    ManagerName = "John Doe",
+                    ManagerPicture = "C:\\Pics\\gym-manager.jpg",
+                    TrainerName = "Jared donger",
+                    TrainerPicture = "C:\\Pics\\gym-trainer.jpg"
+                };
                 StreamReader reader = new StreamReader("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\EmailBody.txt");
                 string emailText = reader.ReadToEnd();
-                string to = member.Email;
-                string from = "follmeradam@gmail.com";
-                string subject = "Welcome to Planet Fitness" + localGym.Name;
-                string body = reader.ToString(); 
-                MailMessage message = new MailMessage(from, to, subject, body);
-                message.IsBodyHtml = true;
-                Attachment manager = new Attachment(localGym.ManagerPicture);
-                Attachment trainer = new Attachment(localGym.TrainerPicture);
-                message.Attachments.Add(manager);
-                message.Attachments.Add(trainer);
-                string ContentID = "Image";
-                manager.ContentId = ContentID;
-                trainer.ContentId = ContentID;
+                MailMessage message = new MailMessage();
 
-                manager.ContentDisposition.Inline = true;
-                manager.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
-                trainer.ContentDisposition.Inline = true;
-                trainer.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
+                message.To.Add(member.Email);
+                message.From = new MailAddress("follmeradam@gmail.com");
+                message.Subject = "Welcome to Planet Fitness" + localGym.Name;
+                string body = string.Format(emailText.ToString(), localGym.Name, member.Name, localGym.Address, localGym.CityZip,
+                    localGym.ManagerName, "managerPicture", localGym.TrainerName, "trainerPicture");
+
+                AlternateView plainView = AlternateView.CreateAlternateViewFromString("This plain text", null, "text/plain");
+
+                AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+
+                LinkedResource manager = new LinkedResource(localGym.ManagerPicture);
+                manager.ContentId = "managerPicture";
+                htmlView.LinkedResources.Add(manager);
+                LinkedResource trainer = new LinkedResource(localGym.TrainerPicture);
+                trainer.ContentId = "trainerPicture";
+                htmlView.LinkedResources.Add(trainer);
+
+                message.AlternateViews.Add(plainView);
+                message.AlternateViews.Add(htmlView);
+                
+                //MailMessage message = new MailMessage(from, to, subject, body);
+                //message.IsBodyHtml = true;
+
+
+                //Attachment manager = new Attachment(localGym.ManagerPicture);
+                //Attachment trainer = new Attachment(localGym.TrainerPicture);
+                //message.Attachments.Add(manager);
+                //message.Attachments.Add(trainer);
+                //manager.ContentId = "Pic1";
+                //trainer.ContentId = "Pic2";
+
+                //manager.ContentDisposition.Inline = true;
+                //manager.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
+                //trainer.ContentDisposition.Inline = true;
+                //trainer.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
+
+                //var view = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+                //view.LinkedResources.Add(manager);
+                //message.AlternateViews.Add(view);
 
                 //replace with message.Body =
-                string test = string.Format(emailText.ToString(), localGym.Name, member.Name, localGym.Address, localGym.CityZip,
-                    localGym.ManagerName, localGym.ManagerPicture, localGym.TrainerName, localGym.TrainerPicture);
+                
 
                 SmtpClient client = new SmtpClient
                 {
@@ -79,15 +112,14 @@ namespace NewMailer
                     UseDefaultCredentials = false,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential("follmeradam@gmail.com", "PASSWORD!"), //Comment in password
+                    Credentials = new NetworkCredential("follmeradam@gmail.com", "M3i5l4l6!"), //Comment in password
                     Timeout = 20000
                 };
 
                 try
                 {
-                    txtEditor.Text = test.ToString();
-                    //client.Send(message);
-                    //txtEditor.Text = "You did it!";
+                    client.Send(message);
+                    txtEditor.Text = "You did it!";
                 }
                 catch (Exception ex)
                 {
@@ -95,7 +127,7 @@ namespace NewMailer
                     Console.WriteLine("Exception caught in CreateTimeoutTestMessage(): {0}", ex.ToString());
                 }
             }
-            
+
         }
         private void SendEmail(object sender, RoutedEventArgs e) //eventually can pass string server, to, from, subject, body
         {
@@ -146,13 +178,13 @@ namespace NewMailer
             return EmailList;
         }
         public class GymMember
-            {
-                public string Name { get; set; }
-                public string Email { get; set; }
-                public string GymId { get; set; }
-            }
+        {
+            public string Name { get; set; }
+            public string Email { get; set; }
+            public string GymId { get; set; }
+        }
         private class CreateGymMember
-        {  
+        {
             public GymMember Create(string MemberInfo)
             {
                 string[] colData = MemberInfo.Split(',');
