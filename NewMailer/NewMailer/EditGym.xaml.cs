@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,15 @@ namespace NewMailer
         public EditGym()
         {
             InitializeComponent();
+            listBox.ItemsSource = LoadGymList();
+        }
+
+        private ArrayList LoadGymList()
+        {
+            ArrayList gyms = new ArrayList();
+            //Code foreach based on CSV
+            return gyms;
+
         }
     }
 }
