@@ -8,7 +8,7 @@
         Title="EditGym" Height="350" Width="525">
     <Grid>
         <Label x:Name="SelectGym" Content="Select a Gym" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,9,0,0"/>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="260" VerticalAlignment="Top" Width="126" Margin="10,40,0,0"/>
+        <ListBox x:Name="ListOfGyms" HorizontalAlignment="Left" Height="260" VerticalAlignment="Top" Width="126" Margin="10,40,0,0"/>
         <Label x:Name="gymName" Content="Gym Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,13,0,0"/>
         <Label x:Name="gymAddress" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,60,0,0"/>
         <Label x:Name="gymCity" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,104,0,0" RenderTransformOrigin="0.583,0.977"/>

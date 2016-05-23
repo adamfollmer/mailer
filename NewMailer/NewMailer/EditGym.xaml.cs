@@ -23,14 +23,9 @@ namespace NewMailer
         public EditGym()
         {
             InitializeComponent();
-            listBox.ItemsSource = LoadGymList();
-        }
-
-        private ArrayList LoadGymList()
-        {
-            ArrayList gyms = new ArrayList();
-            //Code foreach based on CSV
-            return gyms;
+            EmailConstruction.Gym planetGym = new EmailConstruction.Gym();
+            List<EmailConstruction.Gym> Gyms = planetGym.gyms;
+            ListOfGyms.DataContext = Gyms;
         }
     }
 }

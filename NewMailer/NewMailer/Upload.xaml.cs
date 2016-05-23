@@ -42,6 +42,7 @@ namespace NewMailer
         }
         private void MassEmail(object sender, RoutedEventArgs e)
         {
+            EmailConstruction.Gym gymData = new EmailConstruction.Gym();
             string CSV = btnOpenFile_Click();
             List<GymMember> EmailList = CSVParse(CSV);
             foreach (GymMember member in EmailList)
