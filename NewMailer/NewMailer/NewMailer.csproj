@@ -59,6 +59,7 @@
       <DependentUpon>EditGym.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmailConstruction.cs" />
+    <Compile Include="Gym.cs" />
     <Compile Include="Upload.xaml.cs">
       <DependentUpon>Upload.xaml</DependentUpon>
     </Compile>

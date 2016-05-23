@@ -38,5 +38,13 @@ namespace NewMailer
             upload.Show();
             this.Close();
         }
+
+
+        private void GoToEdit(object sender, RoutedEventArgs e)
+        {
+            EditGym gym = new NewMailer.EditGym();
+            gym.Show();
+            this.Close();
+        }
     }
 }

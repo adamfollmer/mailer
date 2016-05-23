@@ -23,9 +23,27 @@ namespace NewMailer
         public EditGym()
         {
             InitializeComponent();
-            EmailConstruction.Gym planetGym = new EmailConstruction.Gym();
-            List<EmailConstruction.Gym> Gyms = planetGym.gyms;
-            ListOfGyms.DataContext = Gyms;
-                  }
+            Gym planetGym = new Gym();
+            List<Gym> Gyms = planetGym.GetGyms();
+            foreach (Gym gym in Gyms)
+            {
+                ListOfGyms.Items.Add(gym);
+            }
+
+        }
+
+        private void ListOfGyms_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedGym = (Gym)ListOfGyms.SelectedItem;
+            if (selectedGym != null)
+            {
+                editGymName.SelectedText = selectedGym.Name;
+                editGymAddress.SelectedText = selectedGym.Address;
+                editGymCityZip.SelectedText = selectedGym.CityZip;
+                editGymPhone.SelectedText = selectedGym.Phone;
+                editGymManager.SelectedText = selectedGym.ManagerName;
+                editGymTrainer.SelectedText = selectedGym.TrainerName;
+            }
+        }
     }
 }

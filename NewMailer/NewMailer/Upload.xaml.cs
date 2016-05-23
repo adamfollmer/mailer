@@ -42,12 +42,12 @@ namespace NewMailer
         }
         private void MassEmail(object sender, RoutedEventArgs e)
         {
-            EmailConstruction.Gym gymData = new EmailConstruction.Gym();
+            Gym gymData = new Gym();
             string CSV = btnOpenFile_Click();
             List<GymMember> EmailList = CSVParse(CSV);
             foreach (GymMember member in EmailList)
             {
-                EmailConstruction.Gym localGym = gymData.SelectGym(member);
+                Gym localGym = gymData.SelectGym(member);
                 StreamReader reader = new StreamReader("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\EmailBody.txt");
                 string emailText = reader.ReadToEnd();
                 string to = member.Email;
