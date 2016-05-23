@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,6 @@ namespace NewMailer
             EmailConstruction.Gym planetGym = new EmailConstruction.Gym();
             List<EmailConstruction.Gym> Gyms = planetGym.gyms;
             ListOfGyms.DataContext = Gyms;
-            
-        }
+                  }
     }
 }
