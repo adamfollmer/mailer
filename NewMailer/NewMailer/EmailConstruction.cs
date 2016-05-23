@@ -39,16 +39,26 @@ namespace NewMailer
                         TrainerPicture = values[7],
                     };
                     gyms.Add(validGym);
-                } 
+                }
             }
-        }
-        public void Edit()
-        {
 
-        }
-        public void CreateNew()
-        {
+            public Gym SelectGym(Upload.GymMember member)
+            {
+                foreach (Gym gym in gyms)
+                {
+                    if (member.GymId == gym.Name)
+                        return gym;
+                }
+                return gyms[0];
+            }
+            public void Edit()
+            {
 
+            }
+            public void CreateNew()
+            {
+
+            }
         }
     }
 }

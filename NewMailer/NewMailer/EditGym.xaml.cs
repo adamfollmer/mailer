@@ -22,6 +22,10 @@ namespace NewMailer
         public EditGym()
         {
             InitializeComponent();
+            EmailConstruction.Gym planetGym = new EmailConstruction.Gym();
+            List<EmailConstruction.Gym> Gyms = planetGym.gyms;
+            ListOfGyms.DataContext = Gyms;
+            
         }
     }
 }
