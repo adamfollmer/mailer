@@ -21,7 +21,7 @@
         <TextBox x:Name="editGymPhone" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Margin="250,152,0,0"/>
         <TextBox x:Name="editGymManager" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Margin="250,201,0,0"/>
         <TextBox x:Name="editGymTrainer" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Margin="250,252,0,0"/>
-        <Button x:Name="button" Content="Save Changes" VerticalAlignment="Top" Margin="268,289,162.4,0" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="button" Content="Save Changes" VerticalAlignment="Top" Margin="268,289,162.4,0" RenderTransformOrigin="0.5,0.5" Click="SaveChanges">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

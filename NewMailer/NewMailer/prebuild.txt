@@ -1,0 +1,2 @@
+if exist "$(TargetPath).locked" del "$(TargetPath).locked"
+if not exist "$(TargetPath).locked" move "$(TargetPath)" "$(TargetPath).locked"

@@ -45,5 +45,10 @@ namespace NewMailer
                 editGymTrainer.SelectedText = selectedGym.TrainerName;
             }
         }
+
+        private void SaveChanges(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
