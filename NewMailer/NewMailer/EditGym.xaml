@@ -1,0 +1,46 @@
+﻿<Window x:Class="NewMailer.Upload"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewMailer"
+        mc:Ignorable="d"
+        Title="EditGym" Height="350" Width="525">
+    <Grid>
+        <Label x:Name="SelectGym" Content="Select a Gym" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,9,0,0"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="260" VerticalAlignment="Top" Width="126" Margin="10,40,0,0"/>
+        <Label x:Name="gymName" Content="Gym Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,13,0,0"/>
+        <Label x:Name="gymAddress" Content="Address:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,60,0,0"/>
+        <Label x:Name="gymCity" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,104,0,0" RenderTransformOrigin="0.583,0.977"/>
+        <Label x:Name="gymPhone" Content="Phone:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,148,0,0" RenderTransformOrigin="0.583,0.977"/>
+        <Label x:Name="gymManager" Content="Manager:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,197,0,0" RenderTransformOrigin="0.583,0.977"/>
+        <Label x:Name="gymTrainer" Content="Trainer:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,248,0,0" RenderTransformOrigin="0.583,0.977"/>
+        <TextBox x:Name="editGymName" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Margin="250,16,0,0"/>
+        <TextBox x:Name="editGymAddress" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Margin="250,64,0,0"/>
+        <TextBox x:Name="editGymCityZip" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Margin="250,104,0,0"/>
+        <TextBox x:Name="editGymPhone" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Margin="250,152,0,0"/>
+        <TextBox x:Name="editGymManager" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Margin="250,201,0,0"/>
+        <TextBox x:Name="editGymPicture" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Margin="250,252,0,0"/>
+        <Button x:Name="button" Content="Save Changes" VerticalAlignment="Top" Margin="268,289,162.4,0" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.718"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="button_Copy" Content="Cancel" VerticalAlignment="Top" Margin="376,290,54.4,0" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.718"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+
+    </Grid>
+</Window>

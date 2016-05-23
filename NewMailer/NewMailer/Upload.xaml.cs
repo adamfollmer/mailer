@@ -47,8 +47,8 @@ namespace NewMailer
             foreach (GymMember member in EmailList)
             {
                 EmailConstruction.Gym localGym = GymSelection.SelectGym(member);
-                TextReader reader = File.OpenText("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\EmailBody.txt");
-                string gym = localGym.Name;
+                StreamReader reader = new StreamReader("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\EmailBody.txt");
+                string emailText = reader.ReadToEnd();
                 string to = member.Email;
                 string from = "follmeradam@gmail.com";
                 string subject = "Welcome to Planet Fitness" + localGym.Name;
@@ -68,8 +68,8 @@ namespace NewMailer
                 trainer.ContentDisposition.Inline = true;
                 trainer.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
 
-                //replace with message.Body
-                string test = string.Format(reader.ToString(), localGym.Name, member.Name, localGym.Address, localGym.CityZip,
+                //replace with message.Body =
+                string test = string.Format(emailText.ToString(), localGym.Name, member.Name, localGym.Address, localGym.CityZip,
                     localGym.ManagerName, localGym.ManagerPicture, localGym.TrainerName, localGym.TrainerPicture);
 
                 SmtpClient client = new SmtpClient
