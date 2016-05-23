@@ -1,0 +1,11 @@
+﻿<html>
+<body>
+	<h2> Welcome to Planet Fitness {0}!</h2>
+	<p> Hello {1}, this email is to welcome you to your new gym! <br>
+	Your gym is located in {2}, {3}. </p> <br>
+	<h3> Meet your gym manager, {4} </h3>
+	<img src=\"{5}" + contentID + "\">
+	<h3> Meet your gym trainer, {6} </h3>
+	<img src=\"{7}" + contentID + "\">
+</body>
+</html>

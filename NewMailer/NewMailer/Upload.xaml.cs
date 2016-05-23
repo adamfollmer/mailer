@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.Net.Mail;
 using System.Net;
+using System.Net.Mime;
 
 namespace NewMailer
 {
@@ -23,18 +24,78 @@ namespace NewMailer
     /// </summary>
     public partial class Upload : Window
     {
+       EmailConstruction GymSelection = new EmailConstruction();
+
         public Upload()
         {
             InitializeComponent();
         }
 
-        private void btnOpenFile_Click(object sender, RoutedEventArgs e)
+        private string btnOpenFile_Click()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
-                txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
+                return openFileDialog.FileName;
             }
+            return null;
+        }
+        private void MassEmail(object sender, RoutedEventArgs e)
+        {
+            string CSV = btnOpenFile_Click();
+            List<GymMember> EmailList = CSVParse(CSV);
+            foreach (GymMember member in EmailList)
+            {
+                EmailConstruction.Gym localGym = GymSelection.SelectGym(member);
+                TextReader reader = File.OpenText("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\EmailBody.txt");
+                string gym = localGym.Name;
+                string to = member.Email;
+                string from = "follmeradam@gmail.com";
+                string subject = "Welcome to Planet Fitness" + localGym.Name;
+                string body = reader.ToString(); 
+                MailMessage message = new MailMessage(from, to, subject, body);
+                message.IsBodyHtml = true;
+                Attachment manager = new Attachment(localGym.ManagerPicture);
+                Attachment trainer = new Attachment(localGym.TrainerPicture);
+                message.Attachments.Add(manager);
+                message.Attachments.Add(trainer);
+                string ContentID = "Image";
+                manager.ContentId = ContentID;
+                trainer.ContentId = ContentID;
+
+                manager.ContentDisposition.Inline = true;
+                manager.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
+                trainer.ContentDisposition.Inline = true;
+                trainer.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
+
+                //replace with message.Body
+                string test = string.Format(reader.ToString(), localGym.Name, member.Name, localGym.Address, localGym.CityZip,
+                    localGym.ManagerName, localGym.ManagerPicture, localGym.TrainerName, localGym.TrainerPicture);
+
+                SmtpClient client = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    UseDefaultCredentials = false,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Credentials = new NetworkCredential("follmeradam@gmail.com", "PASSWORD!"), //Comment in password
+                    Timeout = 20000
+                };
+
+                try
+                {
+                    txtEditor.Text = test.ToString();
+                    //client.Send(message);
+                    //txtEditor.Text = "You did it!";
+                }
+                catch (Exception ex)
+                {
+                    txtEditor.Text = ex.ToString();
+                    Console.WriteLine("Exception caught in CreateTimeoutTestMessage(): {0}", ex.ToString());
+                }
+            }
+            
         }
         private void SendEmail(object sender, RoutedEventArgs e) //eventually can pass string server, to, from, subject, body
         {
@@ -50,13 +111,9 @@ namespace NewMailer
                 UseDefaultCredentials = false,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
-                Credentials = new NetworkCredential("follmeradam@gmail.com", "M3i5l4l6!"),
+                Credentials = new NetworkCredential("follmeradam@gmail.com", "PASSWORD!"), //Comment in password
                 Timeout = 20000
-
-
             };
-            //client.Timeout = 100;
-            //client.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
 
             try
             {
@@ -71,12 +128,11 @@ namespace NewMailer
         }
 
 
-        private void CSVParse(object sender, RoutedEventArgs e)
+        private List<GymMember> CSVParse(string csv)
         {
             CreateGymMember memberMaker = new CreateGymMember();
-            //var reader = File.ReadAllLines();
             List<GymMember> EmailList = new List<GymMember>();
-            foreach (string line in File.ReadLines(@"C:\\Users\\Derek Scheller\\Documents\\Visual Studio 2015\\Projects\\EmailTools\\mailer\\NewMailer\\NewMailer\\test.csv"))
+            foreach (string line in File.ReadLines(csv))
             {
                 if (line.Contains("@"))
                 {
@@ -87,6 +143,7 @@ namespace NewMailer
                     }
                 }
             }
+            return EmailList;
         }
         public class GymMember
             {

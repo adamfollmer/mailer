@@ -7,9 +7,8 @@
         mc:Ignorable="d"
         Title="Upload" Height="350" Width="525">
     <Grid>
-        <Button x:Name="OpenFile" Content="Select A File" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Margin="195,48,0,0" FontFamily="Segoe UI Black" FontSize="14" Click="btnOpenFile_Click"/>
         <TextBox x:Name="txtEditor" HorizontalAlignment="Left" Height="159" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Margin="162,91,0,0"/>
         <Button x:Name="Send" Content="Send Email" HorizontalAlignment="Left" Margin="217,269,0,0" VerticalAlignment="Top" Width="75" Click="SendEmail"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="33,188,0,0" Click="CSVParse"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="33,188,0,0" Click="MassEmail"/>
     </Grid>
 </Window>
