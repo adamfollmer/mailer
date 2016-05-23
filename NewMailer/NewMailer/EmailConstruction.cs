@@ -11,7 +11,7 @@ namespace NewMailer
     {
         public class Gym
         {
-            public List<Gym> gyms;
+            public List<Gym> gyms = new List<Gym>();
             public string Name;
             public string Address;
             public string CityZip;
