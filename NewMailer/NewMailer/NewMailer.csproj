@@ -55,14 +55,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreateGym.xaml.cs">
+      <DependentUpon>CreateGym.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditCreateSelect.xaml.cs">
+      <DependentUpon>EditCreateSelect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditGym.xaml.cs">
       <DependentUpon>EditGym.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmailConstruction.cs" />
     <Compile Include="Gym.cs" />
+    <Compile Include="NameNewGym.xaml.cs">
+      <DependentUpon>NameNewGym.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Upload.xaml.cs">
       <DependentUpon>Upload.xaml</DependentUpon>
     </Compile>
+    <Page Include="CreateGym.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditCreateSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditGym.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -79,6 +96,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NameNewGym.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Upload.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

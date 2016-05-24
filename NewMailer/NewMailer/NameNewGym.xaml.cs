@@ -10,32 +10,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace NewMailer
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NameNewGym.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NameNewGym : Window
     {
-
-        public MainWindow()
+        public NameNewGym()
         {
             InitializeComponent();
-            
         }
-        private void GoToUpload(object sender, RoutedEventArgs e)
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Upload upload = new NewMailer.Upload();
-            upload.Show();
+            MainWindow main = new MainWindow();
+            main.Show();
             this.Close();
         }
-        private void GoToEdit(object sender, RoutedEventArgs e)
+
+        private void Continue_Click(object sender, RoutedEventArgs e)
         {
-            EditCreateSelect gym = new EditCreateSelect();
-            gym.Show();
+            CreateGym create = new CreateGym(get_GymName.Text);
+            create.Show();
             this.Close();
         }
     }

@@ -11,6 +11,6 @@
         </Button>
         <Button x:Name="button1" Content="Edit Gym Details" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Margin="189,194,0,0" Height="32
                 " FontFamily="Segoe UI Black" FontSize="14" Click="GoToEdit"/>
-        <TextBox x:Name="textBox" Height="35" TextWrapping="Wrap" Text="Planet Fitness New Member E-Mailer" VerticalAlignment="Top" Margin="44,33,25.4,0" TextChanged="textBox_TextChanged" FontWeight="Bold" FontSize="24"/>
+        <TextBlock x:Name="textBox" Height="35" TextWrapping="Wrap" Text="Planet Fitness New Member E-Mailer" VerticalAlignment="Top" Margin="44,33,25.4,0" FontWeight="Bold" FontSize="24"/>
     </Grid>
 </Window>

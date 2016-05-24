@@ -22,46 +22,44 @@ namespace NewMailer
     public partial class EditGym : Window
     {
         List<Gym> Gyms = new List<Gym>();
-        public EditGym()
+        public EditGym(Gym edittedGym)
         {
             InitializeComponent();
             Gym planetGym = new Gym();
             Gyms = planetGym.GetGyms();
-            foreach (Gym gym in Gyms)
-            {
-                ListOfGyms.Items.Add(gym);
-            }
-        }
-        private void ListOfGyms_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var selectedGym = (Gym)ListOfGyms.SelectedItem;
-            if (selectedGym != null)
-            {
-                editGymName.SelectedText = selectedGym.Name;
-                editGymAddress.SelectedText = selectedGym.Address;
-                editGymCityZip.SelectedText = selectedGym.CityZip;
-                editGymPhone.SelectedText = selectedGym.Phone;
-                editGymManager.SelectedText = selectedGym.ManagerName;
-                editGymTrainer.SelectedText = selectedGym.TrainerName;
-            }
+            get_GymName.Text = edittedGym.Name;
+            get_GymAdd.Text = edittedGym.Address;
+            get_GymCSZ.Text = edittedGym.CityZip;
+            get_GymPhone.Text = edittedGym.Phone;
+            get_GymMN.Text = edittedGym.ManagerName;
+            get_GymTN.Text = edittedGym.TrainerName;
         }
         private void SaveChanges(object sender, RoutedEventArgs e)
         {
             StringBuilder csv = new StringBuilder();
             foreach(Gym gym in Gyms)
             {
-                if(gym.Name == editGymName.SelectedText)
+                if(gym.Name == get_GymName.Text)
                 {
-                    gym.Name = editGymName.Text;
-                    gym.Phone = editGymPhone.Text;
-                    gym.ManagerName = editGymManager.Text;
-                    gym.TrainerName = editGymTrainer.Text;
-                    gym.Address = editGymAddress.Text;
-                    gym.CityZip = editGymCityZip.Text; 
+                    gym.Phone = get_GymPhone.Text.Replace(',', ' ');
+                    gym.ManagerName = get_GymMN.Text.Replace(',', ' ');
+                    gym.TrainerName = get_GymTN.Text.Replace(',', ' ');
+                    gym.Address = get_GymAdd.Text.Replace(',', ' ');
+                    gym.CityZip = get_GymCSZ.Text.Replace(',', ' '); 
                 }
                 csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + gym.ManagerPicture + "," + gym.TrainerName + "," + gym.TrainerPicture);
             }
             File.WriteAllText(@"ReadFile\\GymInfo.csv", csv.ToString());
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close(); 
+        }
+
+        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
         }
     }
 }
