@@ -40,6 +40,23 @@ namespace NewMailer
             }
             return null;
         }
+
+        private AlternateView GetEmbeddedImage(Gym gym, GymMember member)
+        {
+            LinkedResource managerPicture = new LinkedResource(gym.ManagerPicture);
+            LinkedResource trainerPicture = new LinkedResource(gym.TrainerPicture);
+            managerPicture.ContentId = Guid.NewGuid().ToString();
+            trainerPicture.ContentId = Guid.NewGuid().ToString();
+            StreamReader reader = new StreamReader("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\EmailBody.txt");
+            string emailText = reader.ReadToEnd();
+            string htmlBody = string.Format(emailText.ToString(), gym.Name, member.Name, gym.Address, gym.CityZip,
+                    gym.ManagerName, managerPicture.ContentId, gym.TrainerName, trainerPicture.ContentId); ;
+            AlternateView alternateView = AlternateView.CreateAlternateViewFromString(htmlBody, null, MediaTypeNames.Text.Html);
+            alternateView.LinkedResources.Add(managerPicture);
+            alternateView.LinkedResources.Add(trainerPicture);
+            return alternateView;
+        }
+
         private void MassEmail(object sender, RoutedEventArgs e)
         {
             Gym gymData = new Gym();
@@ -60,52 +77,13 @@ namespace NewMailer
                     TrainerName = "Jared donger",
                     TrainerPicture = "C:\\Pics\\gym-trainer.jpg"
                 };
-                StreamReader reader = new StreamReader("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\EmailBody.txt");
-                string emailText = reader.ReadToEnd();
-                MailMessage message = new MailMessage();
 
+                MailMessage message = new MailMessage();
+                message.IsBodyHtml = true;
+                message.AlternateViews.Add(GetEmbeddedImage(local, member));
                 message.To.Add(member.Email);
                 message.From = new MailAddress("follmeradam@gmail.com");
-                message.Subject = "Welcome to Planet Fitness" + localGym.Name;
-                string body = string.Format(emailText.ToString(), localGym.Name, member.Name, localGym.Address, localGym.CityZip,
-                    localGym.ManagerName, "managerPicture", localGym.TrainerName, "trainerPicture");
-
-                AlternateView plainView = AlternateView.CreateAlternateViewFromString("This plain text", null, "text/plain");
-
-                AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
-
-                LinkedResource manager = new LinkedResource(localGym.ManagerPicture);
-                manager.ContentId = "managerPicture";
-                htmlView.LinkedResources.Add(manager);
-                LinkedResource trainer = new LinkedResource(localGym.TrainerPicture);
-                trainer.ContentId = "trainerPicture";
-                htmlView.LinkedResources.Add(trainer);
-
-                message.AlternateViews.Add(plainView);
-                message.AlternateViews.Add(htmlView);
-                
-                //MailMessage message = new MailMessage(from, to, subject, body);
-                //message.IsBodyHtml = true;
-
-
-                //Attachment manager = new Attachment(localGym.ManagerPicture);
-                //Attachment trainer = new Attachment(localGym.TrainerPicture);
-                //message.Attachments.Add(manager);
-                //message.Attachments.Add(trainer);
-                //manager.ContentId = "Pic1";
-                //trainer.ContentId = "Pic2";
-
-                //manager.ContentDisposition.Inline = true;
-                //manager.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
-                //trainer.ContentDisposition.Inline = true;
-                //trainer.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
-
-                //var view = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
-                //view.LinkedResources.Add(manager);
-                //message.AlternateViews.Add(view);
-
-                //replace with message.Body =
-                
+                message.Subject = "Welcome to Planet Fitness" + local.Name;
 
                 SmtpClient client = new SmtpClient
                 {
