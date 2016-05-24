@@ -14,7 +14,7 @@
         <Label x:Name="gymCity" Content="City:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,104,0,0" RenderTransformOrigin="0.583,0.977"/>
         <Label x:Name="gymPhone" Content="Phone:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,148,0,0" RenderTransformOrigin="0.583,0.977"/>
         <Label x:Name="gymManager" Content="Manager:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,197,0,0" RenderTransformOrigin="0.583,0.977"/>
-        <Label x:Name="gymTrainer" Content="Trainer:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,248,0,0" RenderTransformOrigin="0.583,0.977"/>
+        <Label x:Name="gymTrainer" Content="Trainer:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="179,249,0,0" RenderTransformOrigin="0.583,0.977"/>
         <TextBox x:Name="editGymName" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Margin="250,16,0,0"/>
         <TextBox x:Name="editGymAddress" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Margin="250,64,0,0"/>
         <TextBox x:Name="editGymCityZip" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Margin="250,104,0,0"/>

@@ -26,20 +26,12 @@ namespace NewMailer
             InitializeComponent();
             
         }
-
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void GoToUpload(object sender, RoutedEventArgs e)
         {
             Upload upload = new NewMailer.Upload();
             upload.Show();
             this.Close();
         }
-
-
         private void GoToEdit(object sender, RoutedEventArgs e)
         {
             EditGym gym = new NewMailer.EditGym();

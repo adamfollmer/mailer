@@ -46,19 +46,18 @@ namespace NewMailer
             }
         }
         private void SaveChanges(object sender, RoutedEventArgs e)
-
         {
             StringBuilder csv = new StringBuilder();
             foreach(Gym gym in Gyms)
             {
                 if(gym.Name == editGymName.SelectedText)
                 {
-                    gym.Name = editGymName.SelectedText;
+                    gym.Name = editGymName.Text;
                     gym.Phone = editGymPhone.Text;
-                    gym.ManagerName = editGymManager.SelectedText;
-                    gym.TrainerName = editGymTrainer.SelectedText;
-                    gym.Address = editGymAddress.SelectedText;
-                    gym.CityZip = editGymCityZip.SelectedText; 
+                    gym.ManagerName = editGymManager.Text;
+                    gym.TrainerName = editGymTrainer.Text;
+                    gym.Address = editGymAddress.Text;
+                    gym.CityZip = editGymCityZip.Text; 
                 }
                 csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + gym.ManagerPicture + "," + gym.TrainerName + "," + gym.TrainerPicture);
             }
