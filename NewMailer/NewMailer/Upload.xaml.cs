@@ -60,6 +60,10 @@ namespace NewMailer
             int counter = 0;
             Gym gymData = new Gym();
             string CSV = btnOpenFile_Click();
+            if (CSV == null)
+            {
+                return;
+            }
             List<GymMember> EmailList = CSVParse(CSV);
             foreach (GymMember member in EmailList)
             {
