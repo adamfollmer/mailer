@@ -36,6 +36,9 @@ namespace NewMailer
             {
                 return openFileDialog.FileName;
             }
+            Upload reUp = new Upload();
+            reUp.Show();
+            this.Close();
             return null;
         }
 
