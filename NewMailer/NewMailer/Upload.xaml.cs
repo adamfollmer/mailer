@@ -36,7 +36,7 @@ namespace NewMailer
             {
                 return openFileDialog.FileName;
             }
-            return btnOpenFile_Click();
+            return null;
         }
 
         private AlternateView GetEmbeddedImage(Gym gym, GymMember member)
