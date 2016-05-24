@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="EditGym" Height="350" Width="525">
     <Grid>
-        <Button x:Name="Trainer_Photo_Upload" Content="Upload Photo" HorizontalAlignment="Left" Margin="363,206,0,0" VerticalAlignment="Top" Width="85"/>
-        <Button x:Name="Manager_Photo_Upload" Content="Upload Photo" HorizontalAlignment="Left" Margin="363,168,0,0" VerticalAlignment="Top" Width="85"/>
+        <Button x:Name="Trainer_Photo_Upload" Content="Upload Photo" HorizontalAlignment="Left" Margin="363,206,0,0" VerticalAlignment="Top" Width="85" Click="Trainer_Photo_Upload_Click"/>
+        <Button x:Name="Manager_Photo_Upload" Content="Upload Photo" HorizontalAlignment="Left" Margin="363,168,0,0" VerticalAlignment="Top" Width="85" Click="Manager_Photo_Upload_Click"/>
         <Label x:Name="GymName" Content="Gym Name" HorizontalAlignment="Left" Margin="65,17,0,0" VerticalAlignment="Top"/>
         <Label x:Name="GymAdd" Content="Address" HorizontalAlignment="Left" Margin="81,54,0,0" VerticalAlignment="Top"/>
         <Label x:Name="GymCSZ" Content="City State Zip" HorizontalAlignment="Left" Margin="54,92,0,0" VerticalAlignment="Top"/>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -37,22 +38,23 @@ namespace NewMailer
         private void SaveChanges(object sender, RoutedEventArgs e)
         {
             StringBuilder csv = new StringBuilder();
-            foreach(Gym gym in Gyms)
+            foreach (Gym gym in Gyms)
             {
-                if(gym.Name == get_GymName.Text)
+                if (gym.Name == get_GymName.Text)
                 {
                     gym.Phone = get_GymPhone.Text.Replace(',', ' ');
                     gym.ManagerName = get_GymMN.Text.Replace(',', ' ');
                     gym.TrainerName = get_GymTN.Text.Replace(',', ' ');
                     gym.Address = get_GymAdd.Text.Replace(',', ' ');
-                    gym.CityZip = get_GymCSZ.Text.Replace(',', ' '); 
+                    gym.CityZip = get_GymCSZ.Text.Replace(',', ' ');
                 }
                 csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + gym.ManagerPicture + "," + gym.TrainerName + "," + gym.TrainerPicture);
             }
             File.WriteAllText(@"ReadFile\\GymInfo.csv", csv.ToString());
             MainWindow main = new MainWindow();
+            System.Windows.MessageBox.Show("{0}: Gym Details Successfully Updated!",get_GymName.Text);
             main.Show();
-            this.Close(); 
+            this.Close();
         }
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
@@ -60,6 +62,37 @@ namespace NewMailer
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
+        }
+
+        private void Manager_Photo_Upload_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string sourceFile = openFileDialog.FileName;
+                string destFile = string.Format(@"Images//{0}//ManagerPic.jpg", get_GymName.Text);
+                string destFolder = string.Format(@"Images//{0}", get_GymName.Text);
+                if (!Directory.Exists(destFolder))
+                {
+                    Directory.CreateDirectory(destFolder);
+                }
+                File.Copy(sourceFile, destFile, true);
+            }
+        }
+        private void Trainer_Photo_Upload_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string sourceFile = openFileDialog.FileName;
+                string destFile = string.Format(@"Images//{0}//TrainerPic.jpg", get_GymName.Text);
+                string destFolder = string.Format(@"Images//{0}", get_GymName.Text);
+                if (!Directory.Exists(destFolder))
+                {
+                    Directory.CreateDirectory(destFolder);
+                }
+                File.Copy(sourceFile, destFile, true);
+            }
         }
     }
 }

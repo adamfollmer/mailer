@@ -50,6 +50,7 @@ namespace NewMailer
                 csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + gym.ManagerPicture + "," + gym.TrainerName + "," + gym.TrainerPicture);
             }
             File.WriteAllText(@"ReadFile\\GymInfo.csv", csv.ToString());
+            System.Windows.MessageBox.Show("{0}: Gym Details Successfully Created!", get_GymName.Text);
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
@@ -68,13 +69,13 @@ namespace NewMailer
             if (openFileDialog.ShowDialog() == true)
             {
                 string sourceFile = openFileDialog.FileName;
-                string destFile = string.Format("/Images/{0}/ManagerPic.jpg", newGym.Name);
-                string destFolder = string.Format("/Images/{0}", newGym.Name);
-                if (!System.IO.Directory.Exists(destFolder))
+                string destFile = string.Format(@"Images//{0}//ManagerPic.jpg", newGym.Name);
+                string destFolder = string.Format(@"Images//{0}", newGym.Name);
+                if (!Directory.Exists(destFolder))
                 {
-                    System.IO.Directory.CreateDirectory(destFolder);
+                    Directory.CreateDirectory(destFolder);
                 }
-                System.IO.File.Copy(sourceFile, destFile, true);
+                File.Copy(sourceFile, destFile, true);
                 newGym.ManagerPicture = destFile;
             }
         }
@@ -85,13 +86,13 @@ namespace NewMailer
             if (openFileDialog.ShowDialog() == true)
             {
                 string sourceFile = openFileDialog.FileName;
-                string destFile = string.Format("/Images/{0}/TrainerPic.jpg", newGym.Name);
-                string destFolder = string.Format("/Images/{0}", newGym.Name);
-                if (!System.IO.Directory.Exists(destFolder))
+                string destFile = string.Format(@"Images//{0}//TrainerPic.jpg", newGym.Name);
+                string destFolder = string.Format(@"Images//{0}", newGym.Name);
+                if (!Directory.Exists(destFolder))
                 {
-                    System.IO.Directory.CreateDirectory(destFolder);
+                    Directory.CreateDirectory(destFolder);
                 }
-                System.IO.File.Copy(sourceFile, destFile, true);
+                File.Copy(sourceFile, destFile, true);
                 newGym.TrainerPicture = destFile;
             }
         }

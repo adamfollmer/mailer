@@ -24,8 +24,6 @@ namespace NewMailer
     /// </summary>
     public partial class Upload : Window
     {
-        EmailConstruction GymSelection = new EmailConstruction();
-
         public Upload()
         {
             InitializeComponent();
@@ -59,6 +57,7 @@ namespace NewMailer
 
         private void MassEmail(object sender, RoutedEventArgs e)
         {
+            int counter = 0;
             Gym gymData = new Gym();
             string CSV = btnOpenFile_Click();
             List<GymMember> EmailList = CSVParse(CSV);
@@ -100,6 +99,7 @@ namespace NewMailer
                 {
                     client.Send(message);
                     txtEditor.Text = "You did it!";
+                    counter++;
                 }
                 catch (Exception ex)
                 {
@@ -107,40 +107,9 @@ namespace NewMailer
                     Console.WriteLine("Exception caught in CreateTimeoutTestMessage(): {0}", ex.ToString());
                 }
             }
-
+            System.Windows.MessageBox.Show("Successfully Sent {0} Emails!", counter.ToString());
         }
-        private void SendEmail(object sender, RoutedEventArgs e) //eventually can pass string server, to, from, subject, body
-        {
-            string to = "adam_2131@hotmail.com";
-            string from = "follmeradam@gmail.com";
-            string subject = "Welcome friend!";
-            string body = "test 1234";
-            MailMessage message = new MailMessage(from, to, subject, body);
-            SmtpClient client = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                UseDefaultCredentials = false,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                Credentials = new NetworkCredential("follmeradam@gmail.com", "PASSWORD!"), //Comment in password
-                Timeout = 20000
-            };
-
-            try
-            {
-                client.Send(message);
-                txtEditor.Text = "You did it!";
-            }
-            catch (Exception ex)
-            {
-                txtEditor.Text = ex.ToString();
-                Console.WriteLine("Exception caught in CreateTimeoutTestMessage(): {0}", ex.ToString());
-            }
-        }
-
-
-        private List<GymMember> CSVParse(string csv)
+         private List<GymMember> CSVParse(string csv)
         {
             CreateGymMember memberMaker = new CreateGymMember();
             List<GymMember> EmailList = new List<GymMember>();
@@ -178,5 +147,11 @@ namespace NewMailer
             }
         }
 
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+        }
     }
 }

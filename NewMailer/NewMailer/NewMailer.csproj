@@ -64,7 +64,6 @@
     <Compile Include="EditGym.xaml.cs">
       <DependentUpon>EditGym.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EmailConstruction.cs" />
     <Compile Include="Gym.cs" />
     <Compile Include="NameNewGym.xaml.cs">
       <DependentUpon>NameNewGym.xaml</DependentUpon>
