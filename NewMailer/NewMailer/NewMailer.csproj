@@ -134,9 +134,6 @@
   <ItemGroup>
     <Resource Include="EmailBody.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="InLineTest.html" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
