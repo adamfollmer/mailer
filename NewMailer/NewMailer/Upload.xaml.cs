@@ -68,25 +68,12 @@ namespace NewMailer
             foreach (GymMember member in EmailList)
             {
                 Gym localGym = gymData.SelectGym(member);
-
-                Gym local = new Gym
-                {
-                    Name = "Gym",
-                    Address = "123 EZ Street",
-                    CityZip = "Milwaukee, WI",
-                    Phone = "123-555-5555",
-                    ManagerName = "John Doe",
-                    ManagerPicture = "C:\\Pics\\gym-manager.jpg",
-                    TrainerName = "Jared donger",
-                    TrainerPicture = "C:\\Pics\\gym-trainer.jpg"
-                };
-
                 MailMessage message = new MailMessage();
                 message.IsBodyHtml = true;
-                message.AlternateViews.Add(GetEmbeddedImage(local, member));
+                message.AlternateViews.Add(GetEmbeddedImage(localGym, member));
                 message.To.Add(member.Email);
                 message.From = new MailAddress("follmeradam@gmail.com");
-                message.Subject = "Welcome to Planet Fitness" + local.Name;
+                message.Subject = "Welcome to Planet Fitness" + localGym.Name;
 
                 SmtpClient client = new SmtpClient
                 {
@@ -95,14 +82,12 @@ namespace NewMailer
                     UseDefaultCredentials = false,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential("follmeradam@gmail.com", "M3i5l4l6!"), //Comment in password
+                    Credentials = new NetworkCredential("follmeradam@gmail.com", "XXXXXXX!"), //Comment in password
                     Timeout = 20000
                 };
-
                 try
                 {
                     client.Send(message);
-                    txtEditor.Text = "You did it!";
                     counter++;
                 }
                 catch (Exception ex)
