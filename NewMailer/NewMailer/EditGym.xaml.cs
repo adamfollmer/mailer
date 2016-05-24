@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,18 +21,17 @@ namespace NewMailer
     /// </summary>
     public partial class EditGym : Window
     {
+        List<Gym> Gyms = new List<Gym>();
         public EditGym()
         {
             InitializeComponent();
             Gym planetGym = new Gym();
-            List<Gym> Gyms = planetGym.GetGyms();
+            Gyms = planetGym.GetGyms();
             foreach (Gym gym in Gyms)
             {
                 ListOfGyms.Items.Add(gym);
             }
-
         }
-
         private void ListOfGyms_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedGym = (Gym)ListOfGyms.SelectedItem;
@@ -45,10 +45,24 @@ namespace NewMailer
                 editGymTrainer.SelectedText = selectedGym.TrainerName;
             }
         }
-
         private void SaveChanges(object sender, RoutedEventArgs e)
-        {
 
+        {
+            StringBuilder csv = new StringBuilder();
+            foreach(Gym gym in Gyms)
+            {
+                if(gym.Name == editGymName.SelectedText)
+                {
+                    gym.Name = editGymName.SelectedText;
+                    gym.Phone = editGymPhone.Text;
+                    gym.ManagerName = editGymManager.SelectedText;
+                    gym.TrainerName = editGymTrainer.SelectedText;
+                    gym.Address = editGymAddress.SelectedText;
+                    gym.CityZip = editGymCityZip.SelectedText; 
+                }
+                csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + gym.ManagerPicture + "," + gym.TrainerName + "," + gym.TrainerPicture);
+            }
+            File.WriteAllText(@"ReadFile\\GymInfo.csv", csv.ToString());
         }
     }
 }
