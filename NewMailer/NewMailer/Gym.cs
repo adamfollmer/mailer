@@ -45,6 +45,7 @@ namespace NewMailer
                     Directory.CreateDirectory(destFolder);
                 }
             }
+            reader.Close();
             return gyms;
         }
         public Gym SelectGym(Upload.GymMember member)
