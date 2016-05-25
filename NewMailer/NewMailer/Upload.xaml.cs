@@ -151,7 +151,9 @@ namespace NewMailer
 
         private void checkpath(object sender, RoutedEventArgs e)
         {
-            txtEditor.Text = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            string firstPart = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            //string destFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("C:\\GymPictures\\{0}"));
+            txtEditor.Text = firstPart;
         }
     }
 }
