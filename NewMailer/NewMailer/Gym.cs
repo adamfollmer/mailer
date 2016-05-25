@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace NewMailer
 {
@@ -20,7 +21,8 @@ namespace NewMailer
         public List<Gym> GetGyms()
         {
             List<Gym> gyms = new List<Gym>();
-            var reader = new StreamReader(File.OpenRead(@"ReadFile\\GymInfo.csv"));
+            string csvLocation = Path.Combine(Environment.CurrentDirectory, @"Dependencies\\GymInfo.csv");
+            var reader = new StreamReader(File.OpenRead(csvLocation));
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
@@ -37,6 +39,11 @@ namespace NewMailer
                     TrainerPicture = values[7],
                 };
                 gyms.Add(validGym);
+                string destFolder = string.Format("C:\\GymPictures\\{0}", validGym.Name);
+                if (!Directory.Exists(destFolder))
+                {
+                    Directory.CreateDirectory(destFolder);
+                }
             }
             return gyms;
         }

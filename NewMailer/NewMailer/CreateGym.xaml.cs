@@ -49,7 +49,8 @@ namespace NewMailer
             {
                 csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + gym.ManagerPicture + "," + gym.TrainerName + "," + gym.TrainerPicture);
             }
-            File.WriteAllText(@"ReadFile\\GymInfo.csv", csv.ToString());
+            string csvLocation = System.IO.Path.Combine(Environment.CurrentDirectory, @"Dependencies\\GymInfo.csv");
+            File.WriteAllText(csvLocation, csv.ToString());
             System.Windows.MessageBox.Show("{0}: Gym Details Successfully Created!", get_GymName.Text);
             MainWindow main = new MainWindow();
             main.Show();

@@ -148,5 +148,10 @@ namespace NewMailer
             main.Show();
             this.Close();
         }
+
+        private void checkpath(object sender, RoutedEventArgs e)
+        {
+            txtEditor.Text = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+        }
     }
 }
