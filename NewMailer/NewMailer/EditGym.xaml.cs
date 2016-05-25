@@ -72,8 +72,8 @@ namespace NewMailer
             if (openFileDialog.ShowDialog() == true)
             {
                 string sourceFile = openFileDialog.FileName;
-                string destFile = string.Format("C:\\GymPictures\\{0}\\manager.jpg", get_GymName.Text);
-                string destFolder = string.Format("C:\\GymPictures\\{0}", get_GymName.Text);
+                string destFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}\\manager.jpg", get_GymName.Text));
+                string destFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}", get_GymName.Text));
                 File.Copy(sourceFile, destFile, true);
             }
         }
@@ -83,8 +83,8 @@ namespace NewMailer
             if (openFileDialog.ShowDialog() == true)
             {
                 string sourceFile = openFileDialog.FileName;
-                string destFile = string.Format("C:\\GymPictures\\{0}\\trainer.jpg", get_GymName.Text);
-                string destFolder = string.Format("C:\\GymPictures\\{0}", get_GymName.Text);
+                string destFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}\\trainer.jpg", get_GymName.Text));
+                string destFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}", get_GymName.Text));
                 File.Copy(sourceFile, destFile, true);
             }
         }

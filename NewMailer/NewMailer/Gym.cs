@@ -39,12 +39,13 @@ namespace NewMailer
                     TrainerPicture = values[7],
                 };
                 gyms.Add(validGym);
-                string destFolder = string.Format("C:\\GymPictures\\{0}", validGym.Name);
+                string destFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}", validGym.Name));
                 if (!Directory.Exists(destFolder))
                 {
                     Directory.CreateDirectory(destFolder);
                 }
             }
+            reader.Close();
             return gyms;
         }
         public Gym SelectGym(Upload.GymMember member)

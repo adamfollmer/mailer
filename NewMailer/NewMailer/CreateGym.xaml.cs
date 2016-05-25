@@ -70,8 +70,8 @@ namespace NewMailer
             if (openFileDialog.ShowDialog() == true)
             {
                 string sourceFile = openFileDialog.FileName;
-                string destFile = string.Format(@"Images//{0}//ManagerPic.jpg", newGym.Name);
-                string destFolder = string.Format(@"Images//{0}", newGym.Name);
+                string destFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}\\manager.jpg", get_GymName.Text));
+                string destFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}", get_GymName.Text));
                 if (!Directory.Exists(destFolder))
                 {
                     Directory.CreateDirectory(destFolder);
@@ -87,8 +87,8 @@ namespace NewMailer
             if (openFileDialog.ShowDialog() == true)
             {
                 string sourceFile = openFileDialog.FileName;
-                string destFile = string.Format(@"Images//{0}//TrainerPic.jpg", newGym.Name);
-                string destFolder = string.Format(@"Images//{0}", newGym.Name);
+                string destFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}\\trainer.jpg", get_GymName.Text));
+                string destFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}", get_GymName.Text));
                 if (!Directory.Exists(destFolder))
                 {
                     Directory.CreateDirectory(destFolder);
