@@ -24,9 +24,11 @@ namespace NewMailer
     /// </summary>
     public partial class Upload : Window
     {
+        List<GymMember> invalidMembers;
         public Upload()
         {
             InitializeComponent();
+            invalidMembers = new List<GymMember>();
         }
 
         private string btnOpenFile_Click()
@@ -98,18 +100,22 @@ namespace NewMailer
             }
             System.Windows.MessageBox.Show("Successfully Sent {0} Emails!", counter.ToString());
         }
-         private List<GymMember> CSVParse(string csv)
+        private List<GymMember> CSVParse(string csv)
         {
             CreateGymMember memberMaker = new CreateGymMember();
             List<GymMember> EmailList = new List<GymMember>();
             foreach (string line in File.ReadLines(csv))
             {
-                if (line.Contains("@"))
+                if (line.Contains("Planet Fitness"))
                 {
-                    if (line.Contains("Planet Fitness"))
+                    if (line.Contains("@"))
                     {
                         GymMember ValidMember = memberMaker.Create(line);
                         EmailList.Add(ValidMember);
+                    }else
+                    {
+                        GymMember InvalidMember = memberMaker.Create(line);
+                        invalidMembers.Add(InvalidMember);
                     }
                 }
             }

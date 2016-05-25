@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("NewMailer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("FullShell")]
 [assembly: AssemblyProduct("NewMailer")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

@@ -1,11 +1,61 @@
-﻿<html>
-<body>
-	<h2> Welcome to Planet Fitness {0}!</h2>
-	<p> Hello {1}, this email is to welcome you to your new gym! <br>
-	Your gym is located in {2}, {3}. </p> <br>
-	<h3> Meet your gym manager, {4} </h3>
-	<img src='cid:{5}'/>
-	<h3> Meet your gym trainer, {6} </h3>
-	<img src='cid:{7}'/>
-</body>
-</html>
+﻿<style type="text/css">
+  .header {
+    background: #8a8a8a;
+  }
+  .header .columns {
+    padding-bottom: 15px;
+  }
+  .header p {
+    color: #fff;
+    padding-top: 15px;
+  }
+  .header .wrapper-inner {
+    padding: 20px;
+  }
+  .header .container {
+    background: transparent;
+  }
+  .wrapper.secondary {
+    background: #f3f3f3;
+  }
+  #Gym-Image{
+  width: auto;
+  height: 100px;
+  margin: 0;
+  padding-left: 10;
+  }
+  #image-main{
+  width: auto;
+  height: 500px;
+  }
+</style>
+<container>
+<center>
+  <row>
+    <columns small="12">
+	
+      <h1><img src="PlanetFitnessLogo.jpg" align="center-left">Welcome To Planet Fitness {0}!</h1>
+      <p class="lead">{1} we are sending you this email to welcome you the the Planet Fitness Family.</p>
+      <img src="PlanetFitnessBanner.jpg" id="image-main">
+      <p>We would like to introduce you to two of our key team members at your local branch.</p>
+	  <table align="center">
+	  <th>
+      <h2>Gym Manager <small>{4}</small></h2>
+	  </th>
+	  <th></th>
+	  <th> 
+      <h2>Lead Trainer <small>{6}</small></h2>
+	  </th>
+	  <tr>
+	  <td><img src="{5}" id="Gym-Image" align="center"/></td>
+	  <td><img src="PlanetFitnessLogo.jpg"id="Gym-Image" align="center"></td>
+	  <td><img src="{7}" id="Gym-Image" align="center"/></td>
+	  </tr>
+	  </table>
+    <callout class="primary">
+        <p>If you would like to find out more about your new gym <a href="www.planetfitness.com">CLICK HERE!</a></p>
+      </callout>
+	  </columns>
+  </row>
+        </container>
+		</center>
