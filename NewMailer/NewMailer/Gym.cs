@@ -34,9 +34,9 @@ namespace NewMailer
                     CityZip = values[2],
                     Phone = values[3],
                     ManagerName = values[4],
-                    ManagerPicture = values[5],
+                    ManagerPicture = (Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + values[5]),
                     TrainerName = values[6],
-                    TrainerPicture = values[7],
+                    TrainerPicture = (Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + values[7]),
                 };
                 gyms.Add(validGym);
                 string destFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}", validGym.Name));
