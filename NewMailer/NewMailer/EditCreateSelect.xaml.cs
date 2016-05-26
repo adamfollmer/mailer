@@ -33,9 +33,12 @@ namespace NewMailer
 
         private void Gym_List_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            EditGym edit = new EditGym((Gym)Gym_List.SelectedItem);
-            edit.Show();
-            this.Close();
+            if (Gym_List.SelectedItem != null)
+            {
+                EditGym edit = new EditGym((Gym)Gym_List.SelectedItem);
+                edit.Show();
+                this.Close();
+            }
         }
 
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
