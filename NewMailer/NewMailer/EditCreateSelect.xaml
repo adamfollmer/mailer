@@ -7,10 +7,24 @@
         mc:Ignorable="d"
         Title="EditCreateSelect" Height="350" Width="525">
     <Grid>
-        <Button x:Name="Create_Button" Content="Create New Gym" HorizontalAlignment="Left" Margin="299,103,0,0" VerticalAlignment="Top" Width="104" Click="Create_Button_Click"/>
-        <ListBox x:Name="Gym_List" HorizontalAlignment="Left" Height="180" Margin="71,49,0,0" VerticalAlignment="Top" Width="157" MouseDoubleClick="Gym_List_MouseDoubleClick"/>
-        <Button x:Name="Cancel_Button" Content="Cancel" HorizontalAlignment="Left" Margin="312,172,0,0" VerticalAlignment="Top" Width="75" Click="Cancel_Button_Click"/>
-        <Label x:Name="Gym_Label" Content="Click A Gym To Edit" HorizontalAlignment="Left" Margin="95,18,0,0" VerticalAlignment="Top" Width="157"/>
-
+        <Button x:Name="Create_Button" Content="Create New Gym" HorizontalAlignment="Left" Margin="41,254,0,0" VerticalAlignment="Top" Width="104" Click="Create_Button_Click"/>
+        <ListBox x:Name="Gym_List" HorizontalAlignment="Left" Height="180" Margin="13,65,0,0" VerticalAlignment="Top" Width="157" MouseDoubleClick="Gym_List_MouseDoubleClick" SelectionChanged="Gym_List_SelectionChanged"/>
+        <Button x:Name="Cancel_Button" Content="Cancel" HorizontalAlignment="Left" Margin="51,291,0,0" VerticalAlignment="Top" Width="75" Click="Cancel_Button_Click"/>
+        <Label x:Name="Gym_Label" Content="Click A Gym To Preview Gym Data" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="200" Height="24"/>
+        <Label x:Name="label" Content="Double Click To Edit A Gym" HorizontalAlignment="Left" Margin="13,34,0,0" VerticalAlignment="Top" Width="161"/>
+        <Label x:Name="GymName" Content="Gym Name" HorizontalAlignment="Left" Margin="223,34,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="GymAdd" Content="Address" HorizontalAlignment="Left" Margin="239,65,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="GymCSZ" Content="City State Zip" HorizontalAlignment="Left" Margin="212,96,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="GymPhone" Content="Phone" HorizontalAlignment="Left" Margin="249,127,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="GymMN" Content="Manager Name" HorizontalAlignment="Left" Margin="199,157,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="GymTN" Content="Trainer Name" HorizontalAlignment="Left" Margin="212,184,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="get_GymName" HorizontalAlignment="Left" Height="23" Margin="297,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
+        <TextBlock x:Name="get_GymAdd" HorizontalAlignment="Left" Height="23" Margin="297,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <TextBlock x:Name="get_GymCSZ" HorizontalAlignment="Left" Height="23" Margin="297,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <TextBlock x:Name="get_GymPhone" HorizontalAlignment="Left" Height="23" Margin="297,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <TextBlock x:Name="get_GymMN" HorizontalAlignment="Left" Height="23" Margin="297,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <TextBlock x:Name="get_GymTN" HorizontalAlignment="Left" Height="23" Margin="297,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <Image x:Name="get_MPic" HorizontalAlignment="Left" Height="80" Margin="249,230,0,0" VerticalAlignment="Top" Width="70" />
+        <Image x:Name="get_TPic" HorizontalAlignment="Left" Height="80" Margin="373,230,0,0" VerticalAlignment="Top" Width="70" />
     </Grid>
 </Window>
