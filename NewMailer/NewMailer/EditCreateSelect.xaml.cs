@@ -69,8 +69,8 @@ namespace NewMailer
             get_GymTN.Text = selectedGym.TrainerName;
             if(ListBox.SelectedIndex != -1)
             {
-                string fileManager = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}\\manager.jpg", get_GymName.Text));
-                string fileTrainer = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}\\trainer.jpg", get_GymName.Text));
+                string fileManager = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}\\manager.jpg", get_GymName.Text));
+                string fileTrainer = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}\\trainer.jpg", get_GymName.Text));
                 if (File.Exists(fileManager))
                 {
                     BitmapImage b = new BitmapImage();
