@@ -84,7 +84,7 @@ namespace NewMailer
                     UseDefaultCredentials = false,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential("follmeradam@gmail.com", "XXXXXXXX!"), //Comment in password
+                    Credentials = new NetworkCredential("follmeradam@gmail.com", "M3i5l4l6!"), //Comment in password
                     Timeout = 20000
                 };
                 try
@@ -95,10 +95,10 @@ namespace NewMailer
                 catch (Exception ex)
                 {
                     txtEditor.Text = ex.ToString();
-                    Console.WriteLine("Exception caught in CreateTimeoutTestMessage(): {0}", ex.ToString());
+                    Console.WriteLine(string.Format("Exception caught in CreateTimeoutTestMessage(): {0}", ex.ToString()));
                 }
             }
-            System.Windows.MessageBox.Show("Successfully Sent {0} Emails!", counter.ToString());
+            System.Windows.MessageBox.Show(string.Format("Successfully Sent {0} Emails!", counter.ToString()));
         }
         private List<GymMember> CSVParse(string csv)
         {

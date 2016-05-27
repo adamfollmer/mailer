@@ -49,7 +49,9 @@ namespace NewMailer
                     gym.Address = get_GymAdd.Text.Replace(',', ' ');
                     gym.CityZip = get_GymCSZ.Text.Replace(',', ' ');
                 }
-                csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + gym.ManagerPicture + "," + gym.TrainerName + "," + gym.TrainerPicture);
+                string managerPicture = string.Format("GymPictures\\{0}\\manager.jpg", gym.Name);
+                string trainerPicture = string.Format("GymPictures\\{0}\\trainer.jpg", gym.Name);
+                csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + managerPicture + "," + gym.TrainerName + "," + trainerPicture);
             }
             string csvLocation = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\Information\\GymInfo.csv");
             File.WriteAllText(csvLocation, csv.ToString());
