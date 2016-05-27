@@ -1,11 +1,8 @@
-﻿<container style="background: #FFD700; background: transparent;">
-<center>
-  <row>
-    <columns small="12">
-	
-      <h1><img src="PlanetFitnessLogo.jpg" align="center-left">Welcome To Planet Fitness {0}!</h1>
+﻿  <row>
+    <columns small="12">	
+      <h1><img src= 'cid: {8}' align="center-left">Welcome To Planet Fitness {0}!</h1>
       <p style="color: #9932CC">{1} we are sending you this email to welcome you the the Planet Fitness Family.</p>
-      <img src="PlanetFitnessBanner.jpg" style ="width: auto; height: 500px;"/>
+      <img src= 'cid: {9}' style ="width: auto; height: 500px;"/>
       <p style="color: #9932CC">We would like to introduce you to two of our key team members at your local branch.</p>
 	  <table align="center">
 	  <th>
@@ -16,8 +13,8 @@
       <h2>Lead Trainer <small>{6}</small></h2>
 	  </th>
 	  <tr>
-	  <td><img src='cid:{5}'/></td>
-	  <td><img src="PlanetFitnessLogo.jpg" style="width: auto; height: 100px; margin: 0; padding-left: 10;" align="center"></td>
+	  <td><img src='cid:{5}' style= "width: auto; height: 100px; margin: 0; padding-left: 10;" align="center"/></td>
+	  <td><img src='cid: {8}' style="width: auto; height: 100px; margin: 0; padding-left: 10;" align="center"></td>
 	  <td><img src='cid:{7}' style= "width: auto; height: 100px; margin: 0; padding-left: 10;" align="center"/></td>
 	  </tr>
 	  </table>
@@ -26,5 +23,3 @@
       </callout>
 	  </columns>
   </row>
-        </container>
-		</center>

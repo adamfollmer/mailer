@@ -43,12 +43,16 @@ namespace NewMailer
         {
             LinkedResource managerPicture = new LinkedResource(gym.ManagerPicture);
             LinkedResource trainerPicture = new LinkedResource(gym.TrainerPicture);
+            LinkedResource logo = new LinkedResource(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\PlanetFitnessLogo.jpg"));
+            LinkedResource banner = new LinkedResource(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\PlanetFitnessBanner.jpg"));
             managerPicture.ContentId = Guid.NewGuid().ToString();
             trainerPicture.ContentId = Guid.NewGuid().ToString();
+            logo.ContentId = Guid.NewGuid().ToString();
+            banner.ContentId = Guid.NewGuid().ToString();
             StreamReader reader = new StreamReader(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\Information\\EmailBody.txt"));
             string emailText = reader.ReadToEnd();
             string htmlBody = string.Format(emailText.ToString(), gym.Name, member.Name, gym.Address, gym.CityZip,
-                    gym.ManagerName, managerPicture.ContentId, gym.TrainerName, trainerPicture.ContentId);
+                    gym.ManagerName, managerPicture.ContentId, gym.TrainerName, trainerPicture.ContentId, logo.ContentId, banner.ContentId);
             AlternateView alternateView = AlternateView.CreateAlternateViewFromString(htmlBody, null, MediaTypeNames.Text.Html);
             alternateView.LinkedResources.Add(managerPicture);
             alternateView.LinkedResources.Add(trainerPicture);
@@ -92,7 +96,7 @@ namespace NewMailer
                 catch (Exception ex)
                 {
                     txtEditor.Text = ex.ToString();
-                    Console.WriteLine("Exception caught in CreateTimeoutTestMessage(): {0}", ex.ToString());
+                    Console.WriteLine(string.Format("Exception caught in CreateTimeoutTestMessage(): {0}", ex.ToString()));
                 }
             }
             System.Windows.MessageBox.Show(string.Format("Successfully Sent {0} Emails!", counter.ToString()));
