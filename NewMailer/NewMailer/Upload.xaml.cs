@@ -77,11 +77,11 @@ namespace NewMailer
                 SmtpClient client = new SmtpClient
                 {
                     Host = "smtp.gmail.com",
-                    Port = 465,
+                    Port = 587,
                     UseDefaultCredentials = false,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential("derekscheller23@gmail.com", "D1w20S91"), //Comment in password
+                    Credentials = new NetworkCredential("derekscheller23@gmail.com", "C1T1ZEN$"), //Comment in password
                     Timeout = 20000
                 };
                 try
