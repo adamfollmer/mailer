@@ -43,8 +43,8 @@ namespace NewMailer
         {
             LinkedResource managerPicture = new LinkedResource(gym.ManagerPicture);
             LinkedResource trainerPicture = new LinkedResource(gym.TrainerPicture);
-            LinkedResource logo = new LinkedResource("link");
-            LinkedResource banner = new LinkedResource("link");
+            LinkedResource logo = new LinkedResource(gym.TrainerPicture);
+            LinkedResource banner = new LinkedResource(gym.TrainerPicture);
             managerPicture.ContentId = Guid.NewGuid().ToString();
             trainerPicture.ContentId = Guid.NewGuid().ToString();
             logo.ContentId = Guid.NewGuid().ToString();
