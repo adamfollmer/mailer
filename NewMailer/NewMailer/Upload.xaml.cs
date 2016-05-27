@@ -87,7 +87,7 @@ namespace NewMailer
                     UseDefaultCredentials = false,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential("XXX@gmail.com", "XXX!"), //Comment in password
+                    Credentials = new NetworkCredential("XXX@gmail.com", "XXX"), //Comment in password
                     Timeout = 20000
                 };
                 try
