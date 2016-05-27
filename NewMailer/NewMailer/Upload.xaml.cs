@@ -43,13 +43,8 @@ namespace NewMailer
         {
             LinkedResource managerPicture = new LinkedResource(gym.ManagerPicture);
             LinkedResource trainerPicture = new LinkedResource(gym.TrainerPicture);
-<<<<<<< HEAD
-            LinkedResource logo = new LinkedResource(gym.TrainerPicture);
-            LinkedResource banner = new LinkedResource(gym.TrainerPicture);
-=======
             LinkedResource logo = new LinkedResource(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\PlanetFitnessLogo.jpg"));
             LinkedResource banner = new LinkedResource(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\PlanetFitnessBanner.jpg"));
->>>>>>> 5188c383e5029c83929132f69f864f9a004bfa38
             managerPicture.ContentId = Guid.NewGuid().ToString();
             trainerPicture.ContentId = Guid.NewGuid().ToString();
             logo.ContentId = Guid.NewGuid().ToString();
@@ -61,6 +56,8 @@ namespace NewMailer
             AlternateView alternateView = AlternateView.CreateAlternateViewFromString(htmlBody, null, MediaTypeNames.Text.Html);
             alternateView.LinkedResources.Add(managerPicture);
             alternateView.LinkedResources.Add(trainerPicture);
+            alternateView.LinkedResources.Add(logo);
+            alternateView.LinkedResources.Add(banner);
             return alternateView;
         }
         private void MassEmail(object sender, RoutedEventArgs e)
@@ -80,7 +77,7 @@ namespace NewMailer
                 message.IsBodyHtml = true;
                 message.AlternateViews.Add(GetEmbeddedImage(localGym, member));
                 message.To.Add(member.Email);
-                message.From = new MailAddress("derekscheller23@gmail.com");
+                message.From = new MailAddress("XXX@gmail.com");
                 message.Subject = "Welcome to Planet Fitness " + localGym.Name;
 
                 SmtpClient client = new SmtpClient
@@ -90,7 +87,7 @@ namespace NewMailer
                     UseDefaultCredentials = false,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential("derekscheller23@gmail.com", "C1T1ZEN$"), //Comment in password
+                    Credentials = new NetworkCredential("XXX@gmail.com", "XXX!"), //Comment in password
                     Timeout = 20000
                 };
                 try
