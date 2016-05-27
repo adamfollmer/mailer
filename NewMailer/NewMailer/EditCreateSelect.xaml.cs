@@ -80,6 +80,10 @@ namespace NewMailer
                     get_MPic.Stretch = Stretch.Fill;
                     get_MPic.Source = b;
                 }
+                else
+                {
+                    get_MPic.Source = null;
+                }
                 if (File.Exists(fileTrainer))
                 {
                     BitmapImage b = new BitmapImage();
@@ -88,6 +92,10 @@ namespace NewMailer
                     b.EndInit();
                     get_TPic.Stretch = Stretch.Fill;
                     get_TPic.Source = b;
+                }
+                else
+                {
+                    get_TPic.Source = null;
                 }
             }
         }
