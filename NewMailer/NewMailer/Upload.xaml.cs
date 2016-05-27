@@ -47,10 +47,10 @@ namespace NewMailer
             LinkedResource trainerPicture = new LinkedResource(gym.TrainerPicture);
             managerPicture.ContentId = Guid.NewGuid().ToString();
             trainerPicture.ContentId = Guid.NewGuid().ToString();
-            StreamReader reader = new StreamReader("C:\\VisualStudio\\mailer\\NewMailer\\NewMailer\\EmailBody.txt");
+            StreamReader reader = new StreamReader(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\Information\\EmailBody.txt"));
             string emailText = reader.ReadToEnd();
             string htmlBody = string.Format(emailText.ToString(), gym.Name, member.Name, gym.Address, gym.CityZip,
-                    gym.ManagerName, managerPicture.ContentId, gym.TrainerName, trainerPicture.ContentId); ;
+                    gym.ManagerName, managerPicture.ContentId, gym.TrainerName, trainerPicture.ContentId);
             AlternateView alternateView = AlternateView.CreateAlternateViewFromString(htmlBody, null, MediaTypeNames.Text.Html);
             alternateView.LinkedResources.Add(managerPicture);
             alternateView.LinkedResources.Add(trainerPicture);
@@ -84,7 +84,7 @@ namespace NewMailer
                     UseDefaultCredentials = false,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential("follmeradam@gmail.com", "XXXXXXX!"), //Comment in password
+                    Credentials = new NetworkCredential("follmeradam@gmail.com", "XXXXXXXX!"), //Comment in password
                     Timeout = 20000
                 };
                 try

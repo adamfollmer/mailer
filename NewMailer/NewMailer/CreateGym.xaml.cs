@@ -49,7 +49,7 @@ namespace NewMailer
             {
                 csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + gym.ManagerPicture + "," + gym.TrainerName + "," + gym.TrainerPicture);
             }
-            string csvLocation = System.IO.Path.Combine(Environment.CurrentDirectory, @"Dependencies\\GymInfo.csv");
+            string csvLocation = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\Information\\GymInfo.csv");
             File.WriteAllText(csvLocation, csv.ToString());
             System.Windows.MessageBox.Show("{0}: Gym Details Successfully Created!", get_GymName.Text);
             MainWindow main = new MainWindow();
@@ -70,8 +70,8 @@ namespace NewMailer
             if (openFileDialog.ShowDialog() == true)
             {
                 string sourceFile = openFileDialog.FileName;
-                string destFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}\\manager.jpg", get_GymName.Text));
-                string destFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}", get_GymName.Text));
+                string destFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}\\manager.jpg", get_GymName.Text));
+                string destFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}", get_GymName.Text));
                 if (!Directory.Exists(destFolder))
                 {
                     Directory.CreateDirectory(destFolder);
@@ -87,8 +87,8 @@ namespace NewMailer
             if (openFileDialog.ShowDialog() == true)
             {
                 string sourceFile = openFileDialog.FileName;
-                string destFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}\\trainer.jpg", get_GymName.Text));
-                string destFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}", get_GymName.Text));
+                string destFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}\\trainer.jpg", get_GymName.Text));
+                string destFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}", get_GymName.Text));
                 if (!Directory.Exists(destFolder))
                 {
                     Directory.CreateDirectory(destFolder);

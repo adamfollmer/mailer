@@ -21,7 +21,8 @@ namespace NewMailer
         public List<Gym> GetGyms()
         {
             List<Gym> gyms = new List<Gym>();
-            string csvLocation = Path.Combine(Environment.CurrentDirectory, @"Dependencies\\GymInfo.csv");
+            string csvLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\Information\\GymInfo.csv");
+            //string csvLocation = Path.Combine(Environment.CurrentDirectory, @"Dependencies\\GymInfo.csv");
             var reader = new StreamReader(File.OpenRead(csvLocation));
             while (!reader.EndOfStream)
             {
@@ -34,12 +35,12 @@ namespace NewMailer
                     CityZip = values[2],
                     Phone = values[3],
                     ManagerName = values[4],
-                    ManagerPicture = (Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + values[5]),
+                    ManagerPicture = (Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\NewMemberMailer\\" + values[5]),
                     TrainerName = values[6],
-                    TrainerPicture = (Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + values[7]),
+                    TrainerPicture = (Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\NewMemberMailer\\" + values[7]),
                 };
                 gyms.Add(validGym);
-                string destFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("GymPictures\\{0}", validGym.Name));
+                string destFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}", validGym.Name));
                 if (!Directory.Exists(destFolder))
                 {
                     Directory.CreateDirectory(destFolder);
@@ -53,7 +54,7 @@ namespace NewMailer
             List<Gym> gyms = GetGyms();
             foreach (Gym gym in gyms)
             {
-                if (member.GymId == gym.Name)
+                if (member.GymId.Contains(gym.Name))
                     return gym;
             }
             return gyms[0];
