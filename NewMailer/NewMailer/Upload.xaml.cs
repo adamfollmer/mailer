@@ -30,7 +30,6 @@ namespace NewMailer
             InitializeComponent();
             invalidMembers = new List<GymMember>();
         }
-
         private string btnOpenFile_Click()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -40,7 +39,6 @@ namespace NewMailer
             }
             return null;
         }
-
         private AlternateView GetEmbeddedImage(Gym gym, GymMember member)
         {
             LinkedResource managerPicture = new LinkedResource(gym.ManagerPicture);
@@ -56,7 +54,6 @@ namespace NewMailer
             alternateView.LinkedResources.Add(trainerPicture);
             return alternateView;
         }
-
         private void MassEmail(object sender, RoutedEventArgs e)
         {
             int counter = 0;
@@ -74,17 +71,17 @@ namespace NewMailer
                 message.IsBodyHtml = true;
                 message.AlternateViews.Add(GetEmbeddedImage(localGym, member));
                 message.To.Add(member.Email);
-                message.From = new MailAddress("follmeradam@gmail.com");
-                message.Subject = "Welcome to Planet Fitness" + localGym.Name;
+                message.From = new MailAddress("derekscheller23@gmail.com");
+                message.Subject = "Welcome to Planet Fitness " + localGym.Name;
 
                 SmtpClient client = new SmtpClient
                 {
                     Host = "smtp.gmail.com",
-                    Port = 587,
+                    Port = 465,
                     UseDefaultCredentials = false,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential("follmeradam@gmail.com", "XXXXXXXX!"), //Comment in password
+                    Credentials = new NetworkCredential("derekscheller23@gmail.com", "D1w20S91"), //Comment in password
                     Timeout = 20000
                 };
                 try
@@ -98,7 +95,7 @@ namespace NewMailer
                     Console.WriteLine("Exception caught in CreateTimeoutTestMessage(): {0}", ex.ToString());
                 }
             }
-            System.Windows.MessageBox.Show("Successfully Sent {0} Emails!", counter.ToString());
+            System.Windows.MessageBox.Show(string.Format("Successfully Sent {0} Emails!", counter.ToString()));
         }
         private List<GymMember> CSVParse(string csv)
         {
@@ -141,14 +138,12 @@ namespace NewMailer
                 return Member;
             }
         }
-
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
         }
-
         private void checkpath(object sender, RoutedEventArgs e)
         {
             string firstPart = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);

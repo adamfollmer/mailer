@@ -47,11 +47,13 @@ namespace NewMailer
             StringBuilder csv = new StringBuilder();
             foreach (Gym gym in Gyms)
             {
-                csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + gym.ManagerPicture + "," + gym.TrainerName + "," + gym.TrainerPicture);
+                string managerPicture = string.Format("GymPictures\\{0}\\manager.jpg", gym.Name);
+                string trainerPicture = string.Format("GymPictures\\{0}\\trainer.jpg", gym.Name);
+                csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + managerPicture + "," + gym.TrainerName + "," + trainerPicture);
             }
             string csvLocation = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\Information\\GymInfo.csv");
             File.WriteAllText(csvLocation, csv.ToString());
-            System.Windows.MessageBox.Show("{0}: Gym Details Successfully Created!", get_GymName.Text);
+            System.Windows.MessageBox.Show(string.Format("{0}: Gym Details Successfully Created!", get_GymName.Text));
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
