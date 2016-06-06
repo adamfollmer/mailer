@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="Upload" Height="350" Width="525">
     <Grid>
-        <TextBox x:Name="txtEditor" HorizontalAlignment="Left" Height="159" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Margin="162,38,0,0"/>
-        <Button x:Name="pathchecker" Content="check path" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="207,10,0,0" Click="checkpath"/>
-        <Button x:Name="button" Content="Send Emails" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="207,217,0,0" Click="MassEmail"/>
-        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="207,262,0,0" VerticalAlignment="Top" Width="75" Click="Cancel_Click"/>
+        <Button x:Name="button" Content="Select File/Send Email" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Margin="178,85,0,0" Click="MassEmail" Height="76"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="207,210,0,0" VerticalAlignment="Top" Width="90" Click="Cancel_Click"/>
     </Grid>
 </Window>

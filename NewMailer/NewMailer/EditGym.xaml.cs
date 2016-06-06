@@ -34,10 +34,11 @@ namespace NewMailer
             get_GymPhone.Text = edittedGym.Phone;
             get_GymMN.Text = edittedGym.ManagerName;
             get_GymTN.Text = edittedGym.TrainerName;
+            get_GymWebsite.Text = edittedGym.Website;
         }
         private void SaveChanges(object sender, RoutedEventArgs e)
         {
-            
+
             StringBuilder csv = new StringBuilder();
             foreach (Gym gym in Gyms)
             {
@@ -48,14 +49,15 @@ namespace NewMailer
                     gym.TrainerName = get_GymTN.Text.Replace(',', ' ');
                     gym.Address = get_GymAdd.Text.Replace(',', ' ');
                     gym.CityZip = get_GymCSZ.Text.Replace(',', ' ');
+                    gym.Website = get_GymWebsite.Text.Replace(',', ' ');
                 }
                 string managerPicture = string.Format("GymPictures\\{0}\\manager.jpg", gym.Name);
                 string trainerPicture = string.Format("GymPictures\\{0}\\trainer.jpg", gym.Name);
-                csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + managerPicture + "," + gym.TrainerName + "," + trainerPicture);
+                csv.AppendLine(gym.Name + "," + gym.Address + "," + gym.CityZip + "," + gym.Phone + "," + gym.ManagerName + "," + managerPicture + "," + gym.TrainerName + "," + trainerPicture + "," + gym.Website);
             }
             string csvLocation = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\Information\\GymInfo.csv");
             File.WriteAllText(csvLocation, csv.ToString());
-            MessageBox.Show(string.Format("{0}: Gym Details Successfully Updated!",get_GymName.Text));
+            MessageBox.Show(string.Format("{0}: Gym Details Successfully Updated!", get_GymName.Text));
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
@@ -76,9 +78,11 @@ namespace NewMailer
                 string sourceFile = openFileDialog.FileName;
                 string destFile = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}\\manager.jpg", get_GymName.Text));
                 string destFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}", get_GymName.Text));
+                File.Delete(destFile);
                 File.Copy(sourceFile, destFile, true);
             }
         }
+
         private void Trainer_Photo_Upload_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();

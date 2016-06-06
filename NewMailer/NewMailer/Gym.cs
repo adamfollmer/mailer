@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
+
 namespace NewMailer
 {
     public class Gym
@@ -18,6 +19,7 @@ namespace NewMailer
         public string ManagerPicture;
         public string TrainerName;
         public string TrainerPicture;
+        public string Website;
         public List<Gym> GetGyms()
         {
             List<Gym> gyms = new List<Gym>();
@@ -38,6 +40,7 @@ namespace NewMailer
                     ManagerPicture = (Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\NewMemberMailer\\" + values[5]),
                     TrainerName = values[6],
                     TrainerPicture = (Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\NewMemberMailer\\" + values[7]),
+                    Website = values[8]
                 };
                 gyms.Add(validGym);
                 string destFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}", validGym.Name));

@@ -18,12 +18,14 @@
         <Label x:Name="GymPhone" Content="Phone" HorizontalAlignment="Left" Margin="249,127,0,0" VerticalAlignment="Top"/>
         <Label x:Name="GymMN" Content="Manager Name" HorizontalAlignment="Left" Margin="199,157,0,0" VerticalAlignment="Top"/>
         <Label x:Name="GymTN" Content="Trainer Name" HorizontalAlignment="Left" Margin="212,184,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="WebSite" Content="WebSite" HorizontalAlignment="Left" Margin="240,212,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="get_GymName" HorizontalAlignment="Left" Height="23" Margin="297,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
         <TextBlock x:Name="get_GymAdd" HorizontalAlignment="Left" Height="23" Margin="297,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
         <TextBlock x:Name="get_GymCSZ" HorizontalAlignment="Left" Height="23" Margin="297,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
         <TextBlock x:Name="get_GymPhone" HorizontalAlignment="Left" Height="23" Margin="297,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
         <TextBlock x:Name="get_GymMN" HorizontalAlignment="Left" Height="23" Margin="297,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
         <TextBlock x:Name="get_GymTN" HorizontalAlignment="Left" Height="23" Margin="297,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <TextBlock x:Name="get_Website" HorizontalAlignment="Left" Height="23" Margin="297,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203"/>
         <Image x:Name="get_MPic" HorizontalAlignment="Left" Height="80" Margin="249,230,0,0" VerticalAlignment="Top" Width="70" />
         <Image x:Name="get_TPic" HorizontalAlignment="Left" Height="80" Margin="373,230,0,0" VerticalAlignment="Top" Width="70" />
     </Grid>

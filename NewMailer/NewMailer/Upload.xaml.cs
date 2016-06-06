@@ -45,19 +45,28 @@ namespace NewMailer
             LinkedResource trainerPicture = new LinkedResource(gym.TrainerPicture);
             LinkedResource logo = new LinkedResource(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\PlanetFitnessLogo.jpg"));
             LinkedResource banner = new LinkedResource(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\PlanetFitnessBanner.jpg"));
+            LinkedResource header = new LinkedResource(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\header.jpg"));
+            LinkedResource footer = new LinkedResource(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\footer.jpg"));
+            LinkedResource pot = new LinkedResource(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\PoT.jpg"));
             managerPicture.ContentId = Guid.NewGuid().ToString();
             trainerPicture.ContentId = Guid.NewGuid().ToString();
             logo.ContentId = Guid.NewGuid().ToString();
             banner.ContentId = Guid.NewGuid().ToString();
+            header.ContentId = Guid.NewGuid().ToString();
+            footer.ContentId = Guid.NewGuid().ToString();
+            pot.ContentId = Guid.NewGuid().ToString();
             StreamReader reader = new StreamReader(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NewMemberMailer\\Information\\EmailBody.txt"));
             string emailText = reader.ReadToEnd();
             string htmlBody = string.Format(emailText.ToString(), gym.Name, member.Name, gym.Address, gym.CityZip,
-                    gym.ManagerName, managerPicture.ContentId, gym.TrainerName, trainerPicture.ContentId, logo.ContentId, banner.ContentId);
+                    gym.ManagerName, managerPicture.ContentId, gym.TrainerName, trainerPicture.ContentId, header.ContentId, footer.ContentId, logo.ContentId, pot.ContentId, banner.ContentId, gym.Website);
             AlternateView alternateView = AlternateView.CreateAlternateViewFromString(htmlBody, null, MediaTypeNames.Text.Html);
             alternateView.LinkedResources.Add(managerPicture);
             alternateView.LinkedResources.Add(trainerPicture);
             alternateView.LinkedResources.Add(logo);
             alternateView.LinkedResources.Add(banner);
+            alternateView.LinkedResources.Add(header);
+            alternateView.LinkedResources.Add(footer);
+            alternateView.LinkedResources.Add(pot);
             return alternateView;
         }
         private void MassEmail(object sender, RoutedEventArgs e)
@@ -77,7 +86,7 @@ namespace NewMailer
                 message.IsBodyHtml = true;
                 message.AlternateViews.Add(GetEmbeddedImage(localGym, member));
                 message.To.Add(member.Email);
-                message.From = new MailAddress("XXX@gmail.com");
+                message.From = new MailAddress("follmeradam@gmail.com");
                 message.Subject = "Welcome to Planet Fitness " + localGym.Name;
 
                 SmtpClient client = new SmtpClient
@@ -87,7 +96,7 @@ namespace NewMailer
                     UseDefaultCredentials = false,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential("XXX@gmail.com", "XXX"), //Comment in password
+                    Credentials = new NetworkCredential("follmeradam@gmail.com", "M3i5l4l6!"), //Comment in password
                     Timeout = 20000
                 };
                 try
@@ -97,7 +106,6 @@ namespace NewMailer
                 }
                 catch (Exception ex)
                 {
-                    txtEditor.Text = ex.ToString();
                     Console.WriteLine(string.Format("Exception caught in CreateTimeoutTestMessage(): {0}", ex.ToString()));
                 }
             }
@@ -149,12 +157,6 @@ namespace NewMailer
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
-        }
-        private void checkpath(object sender, RoutedEventArgs e)
-        {
-            string firstPart = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            //string destFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), string.Format("C:\\GymPictures\\{0}"));
-            txtEditor.Text = firstPart;
         }
     }
 }

@@ -67,37 +67,38 @@ namespace NewMailer
             get_GymPhone.Text = selectedGym.Phone;
             get_GymMN.Text = selectedGym.ManagerName;
             get_GymTN.Text = selectedGym.TrainerName;
-            if(ListBox.SelectedIndex != -1)
-            {
-                string fileManager = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}\\manager.jpg", get_GymName.Text));
-                string fileTrainer = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}\\trainer.jpg", get_GymName.Text));
-                if (File.Exists(fileManager))
-                {
-                    BitmapImage b = new BitmapImage();
-                    b.BeginInit();
-                    b.UriSource = new Uri(fileManager,UriKind.RelativeOrAbsolute);
-                    b.EndInit();
-                    get_MPic.Stretch = Stretch.Fill;
-                    get_MPic.Source = b;
-                }
-                else
-                {
-                    get_MPic.Source = null;
-                }
-                if (File.Exists(fileTrainer))
-                {
-                    BitmapImage b = new BitmapImage();
-                    b.BeginInit();
-                    b.UriSource = new Uri(fileTrainer,UriKind.RelativeOrAbsolute);
-                    b.EndInit();
-                    get_TPic.Stretch = Stretch.Fill;
-                    get_TPic.Source = b;
-                }
-                else
-                {
-                    get_TPic.Source = null;
-                }
-            }
+            get_Website.Text = selectedGym.Website;
+            //if (ListBox.SelectedIndex != -1)
+            //{
+            //    string fileManager = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}\\manager.jpg", get_GymName.Text));
+            //    string fileTrainer = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), string.Format("NewMemberMailer\\GymPictures\\{0}\\trainer.jpg", get_GymName.Text));
+            //    if (File.Exists(fileManager))
+            //    {
+            //        BitmapImage b = new BitmapImage();
+            //        b.BeginInit();
+            //        b.UriSource = new Uri(fileManager, UriKind.RelativeOrAbsolute);
+            //        b.EndInit();
+            //        get_MPic.Stretch = Stretch.Fill;
+            //        get_MPic.Source = b;
+            //    }
+            //    else
+            //    {
+            //        get_MPic.Source = null;
+            //    }
+            //    if (File.Exists(fileTrainer))
+            //    {
+            //        BitmapImage b = new BitmapImage();
+            //        b.BeginInit();
+            //        b.UriSource = new Uri(fileTrainer, UriKind.RelativeOrAbsolute);
+            //        b.EndInit();
+            //        get_TPic.Stretch = Stretch.Fill;
+            //        get_TPic.Source = b;
+            //    }
+            //    else
+            //    {
+            //        get_TPic.Source = null;
+            //    }
+            //}
         }
     }
 }

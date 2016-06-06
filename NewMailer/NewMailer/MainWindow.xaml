@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button x:Name="Upload" Content="Upload CSV" VerticalAlignment="Top" Height="32" Margin="189,145,195.4,0" FontFamily="Segoe UI Black" FontSize="14" Click="GoToUpload">
+        <Button x:Name="Upload" Content="Send Email" VerticalAlignment="Top" Height="32" Margin="189,140,184.4,0" FontFamily="Segoe UI Black" FontSize="14" Click="GoToUpload">
         </Button>
-        <Button x:Name="button1" Content="Edit Gym Details" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Margin="189,194,0,0" Height="32
-                " FontFamily="Segoe UI Black" FontSize="14" Click="GoToEdit"/>
-        <TextBlock x:Name="textBox" Height="35" TextWrapping="Wrap" Text="Planet Fitness New Member E-Mailer" VerticalAlignment="Top" Margin="44,33,25.4,0" FontWeight="Bold" FontSize="24"/>
+        <Button x:Name="button1" Content="Edit Gym Details" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="189,194,0,0" Height="32"
+               FontFamily="Segoe UI Black" FontSize="14" Click="GoToEdit" Width="145"/>
+        <TextBlock x:Name="textBox" Height="35" TextWrapping="Wrap" Text="New Member EMailer" VerticalAlignment="Top" Margin="125,37,114.4,0" FontWeight="Bold" FontSize="24"/>
     </Grid>
 </Window>

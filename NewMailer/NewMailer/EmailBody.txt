@@ -1,25 +1,81 @@
-﻿ <center>
-  <row>
-    <columns small="12">	
-      <h1><img src='cid:{8}' align="center-left">Welcome To Planet Fitness {0}!</h1>
-      <p color: #9932CC>{1} we are sending you this email to welcome you the the Planet Fitness Family.</p>
-      <img src='cid:{9}' width: auto; height: 500px;/>
-      <p color: #9932CC>We would like to introduce you to two of our key team members at your local branch.</p>
-	  <table align="center">
-	  <th>
-      <h2>Gym Manager <small>{4}</small></h2>
-	  </th>
-	  <th></th>
-	  <th> 
-      <h2>Lead Trainer <small>{6}</small></h2>
-	  </th>
-	  <tr>
-	  <td><img src='cid:{5}' width: auto; height: 100px; margin: 0; padding-left: 10" align="center"/></td>
-	  <td><img src='cid:{8}' width: auto; height: 100px; margin: 0; padding-left: 10; align="center"></td>
-	  <td><img src='cid:{7}' width: auto; height: 100px; margin: 0; padding-left: 10; align="center"/></td>
-	  </tr>
-	  </table>
-        <p color: #9932CC>If you would like to find out more about your new gym <a href="www.planetfitness.com">CLICK HERE!</a></p>
-	  </columns>
-  </row>
-</center>
+﻿<table width="50%" bgcolor="#f2dc11" style=" align:center; border:50px solid #A5218E; font-size:16px">
+    <tr bgcolor="#A5218E" margin="0" padding="0">
+        <td align="center"><img src='cid:{8}' align="center" width="1000" margin="0" padding="0"/></td>
+    </tr>
+    <tr>
+        <td align="center">
+            <h1>Welcome To Planet Fitness <br><small align="center">{0}!</small></h1>
+            <hr>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <h3>Hello <small>{1}!</small></h3>
+            <p align="center"> Thank you for choosing to join the Plane Fitness family, we would like to introduce you to the club manager:</p>
+            <h2><strong>{4}</strong></h2>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <table align="center" width="50%" bgcolor="#A5218E">
+                <tr>
+                    <td align="center">
+                    <img src='cid:{5}' width="250" margin="0" padding-left="10"/>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <p align="center">If you have any questions or concerns {4} would be happy to help.</p>
+            <br>
+            <p align="center">Also remember we offer <strong>Free Fitness Training </strong>with our certified instructor:</p>
+            <h2><strong>{6}</strong></h2>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <table align="center" width="50%" bgcolor="#A5218E">
+                <tr>
+                    <td align="center">
+                    <img src='cid:{7}' width="250" margin="0" padding-left="10"/>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <p align="center">Stop by the front dest and any staff member would be happy to register you for a class.</p>
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <p >We also have a great way for you to share your success and find extra motivation.
+            <br>Check out <a href="planetoftriumphs.com"> PlanetOfTriumphs.com</a>
+            <br>Register an account for a chance to win <strong>Great Pizes!</strong>
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <img src='cid:{11}' width="500"/><br>
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">Please visit your gyms website for additional information: <a href="{13}">Planet Fitness {0}</a></td>
+    </tr>
+    <tr>
+        <td align="center"><strong>Thank you for choosing Planet Fitness!!</strong></td>
+        <br>
+        <br>
+    </tr> 
+    <tr>
+        <td align="center">
+            <img src='cid:{9}' width="1000" align="center"/>
+        </td>
+    </tr>
+</table>

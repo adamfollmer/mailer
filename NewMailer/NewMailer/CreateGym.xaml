@@ -15,14 +15,16 @@
         <Label x:Name="GymPhone" Content="Phone" HorizontalAlignment="Left" Margin="91,132,0,0" VerticalAlignment="Top"/>
         <Label x:Name="GymMN" Content="Manager Name" HorizontalAlignment="Left" Margin="41,169,0,0" VerticalAlignment="Top"/>
         <Label x:Name="GymTN" Content="Trainer Name" HorizontalAlignment="Left" Margin="64,202,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Website" Content="Website" HorizontalAlignment="Left" Margin="90,235,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="get_GymName" HorizontalAlignment="Left" Height="23" Margin="149,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
         <TextBox x:Name="get_GymAdd" HorizontalAlignment="Left" Height="23" Margin="149,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
         <TextBox x:Name="get_GymCSZ" HorizontalAlignment="Left" Height="23" Margin="149,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
         <TextBox x:Name="get_GymPhone" HorizontalAlignment="Left" Height="23" Margin="149,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
         <TextBox x:Name="get_GymMN" HorizontalAlignment="Left" Height="23" Margin="149,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
         <TextBox x:Name="get_GymTN" HorizontalAlignment="Left" Height="23" Margin="149,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
-        <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="163,266,0,0" VerticalAlignment="Top" Width="75" Click="SaveButton_Click"/>
-        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="271,266,0,0" VerticalAlignment="Top" Width="75" Click="Cancel_Click"/>
+        <TextBox x:Name="get_Website" HorizontalAlignment="Left" Height="23" Margin="149,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
+        <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="161,282,0,0" VerticalAlignment="Top" Width="75" Click="SaveButton_Click"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="271,282,0,0" VerticalAlignment="Top" Width="75" Click="Cancel_Click"/>
 
     </Grid>
 </Window>
